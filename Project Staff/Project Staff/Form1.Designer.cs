@@ -81,6 +81,7 @@ namespace Project_Staff
             this.tbPassword.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbPassword.Location = new System.Drawing.Point(30, 178);
             this.tbPassword.Name = "tbPassword";
+            this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(387, 30);
             this.tbPassword.TabIndex = 2;
             this.tbPassword.TextChanged += new System.EventHandler(this.tbPassword_TextChanged);

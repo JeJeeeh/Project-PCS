@@ -50,7 +50,7 @@ namespace Project_Staff
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(110, 57);
             this.btnLogout.TabIndex = 69;
-            this.btnLogout.Text = "Logout";
+            this.btnLogout.Text = "Back";
             this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
@@ -100,15 +100,16 @@ namespace Project_Staff
             this.dgvStaff.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvStaff.Size = new System.Drawing.Size(776, 368);
             this.dgvStaff.TabIndex = 51;
+            this.dgvStaff.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvStaff_CellMouseDoubleClick);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(14, 49);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 17);
+            this.label2.Size = new System.Drawing.Size(69, 17);
             this.label2.TabIndex = 50;
-            this.label2.Text = "Ingredient List";
+            this.label2.Text = "Menu List";
             // 
             // label1
             // 

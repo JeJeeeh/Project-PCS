@@ -25,20 +25,26 @@ namespace Project_Staff
 
         private void btnStaff_Click(object sender, EventArgs e)
         {
+            Hide();
             Admin_Staff admin = new Admin_Staff();
-            admin.Show();
+            admin.ShowDialog();
+            Show();
         }
 
         private void btnIngredient_Click(object sender, EventArgs e)
         {
+            Hide();
             Admin_Ingredient admin = new Admin_Ingredient();
-            admin.Show();
+            admin.ShowDialog();
+            Show();
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
         {
+            Hide();
             Admin_Menu admin = new Admin_Menu();
-            admin.Show();
+            admin.ShowDialog();
+            Show();
         }
     }
 }

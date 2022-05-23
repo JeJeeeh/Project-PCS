@@ -46,7 +46,7 @@ namespace Project_Staff
 
         public void loadDataGrid()
         {
-            string query = "select me_id as 'ID', me_name as 'Name' from menu";
+            string query = "select m.me_id as 'ID', m.me_name as 'Name', m.me_price as 'Price', m.me_stock as 'Stock', t.ty_name as 'Type' from menu m join type t on m.me_ty_id = t.ty_id where m.me_status = 1 order by 1";
             MySqlCommand cmd = new MySqlCommand(query, conn);
 
             conn.Open();
@@ -68,6 +68,22 @@ namespace Project_Staff
         private void btnLogout_Click(object sender, EventArgs e)
         {
             Dispose();
+        }
+
+        private void dgvStaff_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            int rowIdx = e.RowIndex;
+
+            if (rowIdx < dsMenu.Tables[0].Rows.Count)
+            {
+                int menu_id = Convert.ToInt32(dgvStaff.Rows[rowIdx].Cells[0].Value.ToString());
+
+                Admin_Menu_Add admin = new Admin_Menu_Add(menu_id);
+                admin.ShowDialog();
+                loadDataGrid();
+            }
+
+            
         }
     }
 }
