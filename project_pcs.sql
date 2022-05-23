@@ -1,0 +1,317 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: May 21, 2022 at 06:26 AM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.7
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `project_pcs`
+--
+CREATE DATABASE IF NOT EXISTS `project_pcs` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `project_pcs`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bundle`
+--
+
+CREATE TABLE `bundle` (
+  `bu_id` double NOT NULL,
+  `bu_name` varchar(50) NOT NULL,
+  `bu_price` double NOT NULL,
+  `bu_status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dtrans`
+--
+
+CREATE TABLE `dtrans` (
+  `dt_id` double NOT NULL,
+  `dt_ht_id` double NOT NULL,
+  `dt_me_id` double NOT NULL,
+  `dt_amount` double NOT NULL,
+  `dt_status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `htrans`
+--
+
+CREATE TABLE `htrans` (
+  `ht_id` double NOT NULL,
+  `ht_invoice` varchar(50) NOT NULL,
+  `ht_total` double NOT NULL,
+  `ht_date` date NOT NULL,
+  `ht_status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ingredient`
+--
+
+CREATE TABLE `ingredient` (
+  `in_id` double NOT NULL,
+  `in_name` varchar(50) NOT NULL,
+  `in_price` double NOT NULL,
+  `in_stock` double NOT NULL,
+  `in_status` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `ingredient`
+--
+
+INSERT INTO `ingredient` (`in_id`, `in_name`, `in_price`, `in_stock`, `in_status`) VALUES
+(1, 'bahan2', 123, 1, 1),
+(2, 'asds', 213, 2, 1),
+(3, 'tes', 12, 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menu`
+--
+
+CREATE TABLE `menu` (
+  `me_id` double NOT NULL,
+  `me_name` varchar(50) NOT NULL,
+  `me_price` double NOT NULL,
+  `me_stock` double NOT NULL,
+  `me_ty_id` double NOT NULL,
+  `me_status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menu_bundle`
+--
+
+CREATE TABLE `menu_bundle` (
+  `mb_id` double NOT NULL,
+  `mb_me_id` double NOT NULL,
+  `mb_bu_id` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menu_ingredient`
+--
+
+CREATE TABLE `menu_ingredient` (
+  `mi_id` double NOT NULL,
+  `mi_me_id` double NOT NULL,
+  `mi_bu_id` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `privilege`
+--
+
+CREATE TABLE `privilege` (
+  `pr_id` double NOT NULL,
+  `pr_name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `privilege`
+--
+
+INSERT INTO `privilege` (`pr_id`, `pr_name`) VALUES
+(1, 'admin'),
+(2, 'kitchen'),
+(3, 'cashier');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `type`
+--
+
+CREATE TABLE `type` (
+  `ty_id` double NOT NULL,
+  `ty_name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `us_id` double NOT NULL,
+  `us_username` varchar(50) NOT NULL,
+  `us_password` text NOT NULL,
+  `us_pr_id` double NOT NULL,
+  `us_name` varchar(50) DEFAULT NULL,
+  `us_status` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`us_id`, `us_username`, `us_password`, `us_pr_id`, `us_name`, `us_status`) VALUES
+(1, 'admin', 'admin', 1, NULL, 1),
+(2, 'kitchen', 'kitchen', 2, 'kitchen', 1),
+(3, 'cashier', 'cashier', 3, 'cashier', 1),
+(4, 'tes', 'tes', 2, 'tes', 0);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `bundle`
+--
+ALTER TABLE `bundle`
+  ADD PRIMARY KEY (`bu_id`);
+
+--
+-- Indexes for table `dtrans`
+--
+ALTER TABLE `dtrans`
+  ADD PRIMARY KEY (`dt_id`);
+
+--
+-- Indexes for table `htrans`
+--
+ALTER TABLE `htrans`
+  ADD PRIMARY KEY (`ht_id`);
+
+--
+-- Indexes for table `ingredient`
+--
+ALTER TABLE `ingredient`
+  ADD PRIMARY KEY (`in_id`);
+
+--
+-- Indexes for table `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`me_id`),
+  ADD KEY `me_ty_id` (`me_ty_id`);
+
+--
+-- Indexes for table `menu_bundle`
+--
+ALTER TABLE `menu_bundle`
+  ADD PRIMARY KEY (`mb_id`);
+
+--
+-- Indexes for table `menu_ingredient`
+--
+ALTER TABLE `menu_ingredient`
+  ADD PRIMARY KEY (`mi_id`);
+
+--
+-- Indexes for table `privilege`
+--
+ALTER TABLE `privilege`
+  ADD PRIMARY KEY (`pr_id`);
+
+--
+-- Indexes for table `type`
+--
+ALTER TABLE `type`
+  ADD PRIMARY KEY (`ty_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`us_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `bundle`
+--
+ALTER TABLE `bundle`
+  MODIFY `bu_id` double NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `dtrans`
+--
+ALTER TABLE `dtrans`
+  MODIFY `dt_id` double NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `htrans`
+--
+ALTER TABLE `htrans`
+  MODIFY `ht_id` double NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `ingredient`
+--
+ALTER TABLE `ingredient`
+  MODIFY `in_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `menu`
+--
+ALTER TABLE `menu`
+  MODIFY `me_id` double NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `menu_bundle`
+--
+ALTER TABLE `menu_bundle`
+  MODIFY `mb_id` double NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `menu_ingredient`
+--
+ALTER TABLE `menu_ingredient`
+  MODIFY `mi_id` double NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `privilege`
+--
+ALTER TABLE `privilege`
+  MODIFY `pr_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `type`
+--
+ALTER TABLE `type`
+  MODIFY `ty_id` double NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `us_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
