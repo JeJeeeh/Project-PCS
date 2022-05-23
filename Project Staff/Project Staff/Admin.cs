@@ -35,6 +35,10 @@ namespace Project_Staff
             admin.Show();
         }
 
-        
+        private void btnMenu_Click(object sender, EventArgs e)
+        {
+            Admin_Menu admin = new Admin_Menu();
+            admin.Show();
+        }
     }
 }

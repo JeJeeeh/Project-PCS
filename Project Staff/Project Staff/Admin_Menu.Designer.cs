@@ -36,7 +36,7 @@ namespace Project_Staff
             this.dgvStaff = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,6 +52,7 @@ namespace Project_Staff
             this.btnLogout.TabIndex = 69;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btnClearFilter
             // 
@@ -119,26 +120,27 @@ namespace Project_Staff
             this.label1.TabIndex = 49;
             this.label1.Text = "Welcome Admin";
             // 
-            // btnSave
+            // btnAdd
             // 
-            this.btnSave.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnSave.Location = new System.Drawing.Point(562, 13);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(110, 57);
-            this.btnSave.TabIndex = 70;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnAdd.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnAdd.FlatAppearance.BorderSize = 0;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnAdd.Location = new System.Drawing.Point(562, 13);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(110, 57);
+            this.btnAdd.TabIndex = 70;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // Admin_Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 458);
-            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnClearFilter);
             this.Controls.Add(this.btnFilter);
@@ -163,6 +165,6 @@ namespace Project_Staff
         private System.Windows.Forms.DataGridView dgvStaff;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnAdd;
     }
 }

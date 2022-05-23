@@ -22,7 +22,6 @@ namespace Project_Staff
             InitializeComponent();
 
             connectDB();
-            loadDataGrid();
             btnUpdate.Enabled = false;
             btnDelete.Enabled = false;
             cbFilter.SelectedIndex = 0;
@@ -49,7 +48,7 @@ namespace Project_Staff
 
         public void loadDataGrid()
         {
-            string query = "select in_id as 'Ingredient', in_name as 'Name', in_price as 'Price', in_stock as 'Stock' from ingredient where in_status = 1 order by 1";
+            string query = "select in_id as 'ID', in_name as 'Name', in_price as 'Price', in_stock as 'Stock' from ingredient where in_status = 1 order by 1";
             MySqlCommand cmd = new MySqlCommand(query, conn);
 
             conn.Open();

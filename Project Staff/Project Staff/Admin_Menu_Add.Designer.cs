@@ -39,21 +39,21 @@ namespace Project_Staff
             this.panel4 = new System.Windows.Forms.Panel();
             this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
-            this.label8 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
-            this.label7 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
             this.tbPrice = new System.Windows.Forms.TextBox();
             this.tbName = new System.Windows.Forms.TextBox();
             this.tbId = new System.Windows.Forms.TextBox();
@@ -64,24 +64,24 @@ namespace Project_Staff
             this.rtbDescription = new System.Windows.Forms.RichTextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
             this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,6 +97,7 @@ namespace Project_Staff
             this.btnBack.TabIndex = 55;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnClearFilter
             // 
@@ -182,6 +183,32 @@ namespace Project_Staff
             this.label6.TabIndex = 0;
             this.label6.Text = "Ingredient 4";
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.numericUpDown2);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Location = new System.Drawing.Point(211, 14);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(197, 89);
+            this.panel2.TabIndex = 63;
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Location = new System.Drawing.Point(16, 51);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(163, 22);
+            this.numericUpDown2.TabIndex = 1;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(12, 11);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(103, 23);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Ingredient 2";
+            // 
             // panel6
             // 
             this.panel6.Controls.Add(this.numericUpDown6);
@@ -207,6 +234,32 @@ namespace Project_Staff
             this.label8.Size = new System.Drawing.Size(103, 23);
             this.label8.TabIndex = 0;
             this.label8.Text = "Ingredient 6";
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.numericUpDown1);
+            this.panel7.Controls.Add(this.label3);
+            this.panel7.Location = new System.Drawing.Point(8, 14);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(197, 89);
+            this.panel7.TabIndex = 61;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(16, 51);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(163, 22);
+            this.numericUpDown1.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 11);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(101, 23);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Ingredient 1";
             // 
             // panel3
             // 
@@ -234,32 +287,6 @@ namespace Project_Staff
             this.label5.TabIndex = 0;
             this.label5.Text = "Ingredient 3";
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.numericUpDown2);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Location = new System.Drawing.Point(211, 14);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(197, 89);
-            this.panel2.TabIndex = 63;
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Location = new System.Drawing.Point(16, 51);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(163, 22);
-            this.numericUpDown2.TabIndex = 1;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 11);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(103, 23);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Ingredient 2";
-            // 
             // panel5
             // 
             this.panel5.Controls.Add(this.numericUpDown5);
@@ -285,32 +312,6 @@ namespace Project_Staff
             this.label7.Size = new System.Drawing.Size(103, 23);
             this.label7.TabIndex = 0;
             this.label7.Text = "Ingredient 5";
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.numericUpDown1);
-            this.panel7.Controls.Add(this.label3);
-            this.panel7.Location = new System.Drawing.Point(8, 14);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(197, 89);
-            this.panel7.TabIndex = 61;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(16, 51);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(163, 22);
-            this.numericUpDown1.TabIndex = 1;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 11);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(101, 23);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Ingredient 1";
             // 
             // tbPrice
             // 
@@ -368,7 +369,7 @@ namespace Project_Staff
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnSave.Location = new System.Drawing.Point(655, 468);
+            this.btnSave.Location = new System.Drawing.Point(655, 531);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(175, 57);
             this.btnSave.TabIndex = 55;
@@ -403,33 +404,6 @@ namespace Project_Staff
             this.panel8.Size = new System.Drawing.Size(182, 211);
             this.panel8.TabIndex = 73;
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(24, 45);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(105, 17);
-            this.label13.TabIndex = 0;
-            this.label13.Text = "Ingredient 1 x 1";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(24, 69);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(105, 17);
-            this.label14.TabIndex = 0;
-            this.label14.Text = "Ingredient 3 x 1";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(24, 93);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(105, 17);
-            this.label15.TabIndex = 0;
-            this.label15.Text = "Ingredient 5 x 2";
-            // 
             // label16
             // 
             this.label16.AutoSize = true;
@@ -440,19 +414,46 @@ namespace Project_Staff
             this.label16.TabIndex = 1;
             this.label16.Text = "Menu Ingredients";
             // 
-            // button1
+            // label15
             // 
-            this.button1.BackColor = System.Drawing.Color.Red;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(655, 531);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(175, 57);
-            this.button1.TabIndex = 55;
-            this.button1.Text = "Delete";
-            this.button1.UseVisualStyleBackColor = false;
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(24, 93);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(105, 17);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "Ingredient 5 x 2";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(24, 69);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(105, 17);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "Ingredient 3 x 1";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(24, 45);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(105, 17);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Ingredient 1 x 1";
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.Red;
+            this.btnDelete.FlatAppearance.BorderSize = 0;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDelete.Location = new System.Drawing.Point(655, 469);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(175, 57);
+            this.btnDelete.TabIndex = 55;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = false;
             // 
             // Admin_Menu_Add
             // 
@@ -470,7 +471,7 @@ namespace Project_Staff
             this.Controls.Add(this.label12);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnClearFilter);
@@ -483,21 +484,21 @@ namespace Project_Staff
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.ResumeLayout(false);
@@ -546,6 +547,6 @@ namespace Project_Staff
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
