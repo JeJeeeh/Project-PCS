@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 28, 2022 at 07:25 AM
+-- Generation Time: May 29, 2022 at 01:22 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -101,7 +101,7 @@ CREATE TABLE `menu` (
   `me_id` double NOT NULL,
   `me_name` varchar(50) NOT NULL,
   `me_price` double NOT NULL,
-  `me_stock` double NOT NULL,
+  `me_stock` double DEFAULT NULL,
   `me_ty_id` double NOT NULL,
   `me_status` int(11) NOT NULL,
   `me_description` text DEFAULT NULL
@@ -112,9 +112,7 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`me_id`, `me_name`, `me_price`, `me_stock`, `me_ty_id`, `me_status`, `me_description`) VALUES
-(1, 'sample1', 1, 1, 1, 1, 'sample'),
-(2, 'drink', 1, 1, 2, 1, 'drink'),
-(3, 'dessert', 1, 1, 3, 1, 'dessert');
+(1, 'menu1', 123, 0, 1, 1, 'menu1');
 
 -- --------------------------------------------------------
 
@@ -140,6 +138,18 @@ CREATE TABLE `menu_ingredient` (
   `mi_in_id` double NOT NULL,
   `mi_quantity` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `menu_ingredient`
+--
+
+INSERT INTO `menu_ingredient` (`mi_id`, `mi_me_id`, `mi_in_id`, `mi_quantity`) VALUES
+(13, 1, 1, 2),
+(14, 1, 1, 2),
+(15, 1, 1, 2),
+(16, 1, 1, 2),
+(17, 1, 5, 1),
+(18, 1, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -276,36 +286,6 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `bundle`
---
-ALTER TABLE `bundle`
-  MODIFY `bu_id` double NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `dtrans`
---
-ALTER TABLE `dtrans`
-  MODIFY `dt_id` double NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `htrans`
---
-ALTER TABLE `htrans`
-  MODIFY `ht_id` double NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `ingredient`
---
-ALTER TABLE `ingredient`
-  MODIFY `in_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `menu`
---
-ALTER TABLE `menu`
-  MODIFY `me_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT for table `menu_bundle`
 --
 ALTER TABLE `menu_bundle`
@@ -315,7 +295,7 @@ ALTER TABLE `menu_bundle`
 -- AUTO_INCREMENT for table `menu_ingredient`
 --
 ALTER TABLE `menu_ingredient`
-  MODIFY `mi_id` double NOT NULL AUTO_INCREMENT;
+  MODIFY `mi_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `privilege`
@@ -328,12 +308,6 @@ ALTER TABLE `privilege`
 --
 ALTER TABLE `type`
   MODIFY `ty_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `us_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
