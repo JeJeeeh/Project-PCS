@@ -151,6 +151,7 @@ namespace Project_Staff
             this.Controls.Add(this.label1);
             this.Name = "Admin_Menu";
             this.Text = "Admin_Menu";
+            this.Load += new System.EventHandler(this.Admin_Menu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

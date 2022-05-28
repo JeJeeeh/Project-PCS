@@ -85,5 +85,10 @@ namespace Project_Staff
 
             
         }
+
+        private void Admin_Menu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

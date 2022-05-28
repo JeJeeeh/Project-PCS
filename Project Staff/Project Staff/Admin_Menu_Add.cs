@@ -33,6 +33,7 @@ namespace Project_Staff
             if (this.menu_id == 0)
             {
                 btnDelete.Visible = false;
+                genId();
             }
             else
             {
@@ -180,6 +181,21 @@ namespace Project_Staff
             Dispose();
         }
 
+        private void genId()
+        {
+            if (tbId.Text.Equals(""))
+            {
+                string query = "select (count(*) + 1) from menu";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                conn.Open();
+                string count = cmd.ExecuteScalar().ToString();
+                conn.Close();
+
+                tbId.Text = count;
+            }
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (menu_id > 0)
@@ -202,7 +218,52 @@ namespace Project_Staff
             }
             else
             {
+                conn.Open();
+                using (MySqlTransaction obTrans = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        MySqlCommand cmd = new MySqlCommand();
+                        cmd.Connection = conn;
+                        cmd.CommandText = "insert into menu(me_id, me_name, me_price, me_stock, me_ty_id, me_status, me_description) values(@id, @name, @price, @stock, @type, @status, @description)";
+                        cmd.Parameters.Add(new MySqlParameter("@id", tbId.Text));
+                        cmd.Parameters.Add(new MySqlParameter("@name", tbName.Text));
+                        cmd.Parameters.Add(new MySqlParameter("@price", Convert.ToInt32(tbPrice.Text)));
+                        cmd.Parameters.Add(new MySqlParameter("@stock", "0"));
+                        cmd.Parameters.Add(new MySqlParameter("@type", Convert.ToInt32(cbType.SelectedValue.ToString())));
+                        cmd.Parameters.Add(new MySqlParameter("@status", "1"));
+                        cmd.Parameters.Add(new MySqlParameter("@description", rtbDescription.Text));
 
+                        cmd.ExecuteNonQuery();
+
+                        for (int i = 0; i < counts.Count; i++)
+                        {
+                            if (counts.ElementAt(i).Value > 0)
+                            {
+                                cmd.Parameters.Clear();
+                                cmd.CommandText = "insert into menu_ingredient(mi_me_id, mi_in_id, mi_quantity) values(@menu, @ingredient, @quantity)";
+                                cmd.Parameters.Add(new MySqlParameter("@menu", tbId.Text));
+                                cmd.Parameters.Add(new MySqlParameter("@ingredient", names.ElementAt(i).ToString()));
+                                cmd.Parameters.Add(new MySqlParameter("@quantity", counts.ElementAt(i).Value));
+                            }
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        obTrans.Commit();
+
+                        MessageBox.Show("Menu Added!");
+                        Dispose();
+                    }
+                    catch (MySqlException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+
+                        obTrans.Rollback();
+                    }
+                }
+
+                //TUTUP KONEKSI
+                conn.Close();
             }
             
         }
