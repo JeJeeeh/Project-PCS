@@ -30,13 +30,13 @@ namespace Project_Staff
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dgvCashPay = new System.Windows.Forms.DataGridView();
+            this.dgvReady = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnBack = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCashPay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReady)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -51,29 +51,29 @@ namespace Project_Staff
             this.label1.TabIndex = 10;
             this.label1.Text = "Welcome Cashier";
             // 
-            // dataGridView1
+            // dgvCashPay
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 21);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(743, 267);
-            this.dataGridView1.TabIndex = 1;
+            this.dgvCashPay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCashPay.Location = new System.Drawing.Point(6, 21);
+            this.dgvCashPay.Name = "dgvCashPay";
+            this.dgvCashPay.RowHeadersWidth = 51;
+            this.dgvCashPay.RowTemplate.Height = 24;
+            this.dgvCashPay.Size = new System.Drawing.Size(743, 267);
+            this.dgvCashPay.TabIndex = 1;
             // 
-            // dataGridView2
+            // dgvReady
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(6, 21);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(743, 278);
-            this.dataGridView2.TabIndex = 7;
+            this.dgvReady.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvReady.Location = new System.Drawing.Point(6, 21);
+            this.dgvReady.Name = "dgvReady";
+            this.dgvReady.RowHeadersWidth = 51;
+            this.dgvReady.RowTemplate.Height = 24;
+            this.dgvReady.Size = new System.Drawing.Size(743, 278);
+            this.dgvReady.TabIndex = 7;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dataGridView2);
+            this.groupBox2.Controls.Add(this.dgvReady);
             this.groupBox2.Location = new System.Drawing.Point(23, 370);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(760, 309);
@@ -83,7 +83,7 @@ namespace Project_Staff
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.dgvCashPay);
             this.groupBox1.Location = new System.Drawing.Point(23, 60);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(760, 304);
@@ -115,8 +115,8 @@ namespace Project_Staff
             this.Controls.Add(this.groupBox1);
             this.Name = "Cashier";
             this.Text = "Cashier";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCashPay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReady)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -127,8 +127,8 @@ namespace Project_Staff
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgvCashPay;
+        private System.Windows.Forms.DataGridView dgvReady;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnBack;
