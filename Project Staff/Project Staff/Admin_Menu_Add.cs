@@ -107,7 +107,7 @@ namespace Project_Staff
 
         private void loadIngredients()
         {
-            string query = $"select in_name as 'Name' from ingredient";
+            string query = $"select in_name as 'Name', in_id as 'ID' from ingredient";
 
             MySqlCommand cmd = new MySqlCommand(query, conn);
 
@@ -119,6 +119,7 @@ namespace Project_Staff
             while (rdr.Read())
             {
                 string menu_name = rdr["Name"].ToString();
+                string menu_id = rdr["ID"].ToString();
 
                 Panel pnl = createPanel(x, y) ;
                 Label lblName = createLabel(menu_name);
@@ -128,7 +129,7 @@ namespace Project_Staff
                 pnl.Controls.Add(nup);
                 pnlContainer.Controls.Add(pnl);
 
-                names.Add(menu_name);
+                names.Add(menu_id);
                 counts.Add(nup);
 
                 x++;
@@ -181,21 +182,29 @@ namespace Project_Staff
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string query = $"update menu set me_name = '{tbName.Text}', me_price = {tbPrice.Text}, me_description = '{rtbDescription.Text}', me_ty_id = {cbType.SelectedValue} where me_id = {tbId.Text}";
-            try
+            if (menu_id > 0)
             {
-                conn.Open();
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.ExecuteNonQuery();
-                conn.Close();
+                string query = $"update menu set me_name = '{tbName.Text}', me_price = {tbPrice.Text}, me_description = '{rtbDescription.Text}', me_ty_id = {cbType.SelectedValue} where me_id = {tbId.Text}";
+                try
+                {
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
 
-                Dispose();
+                    Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    conn.Close();
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
-                conn.Close();
+
             }
+            
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
