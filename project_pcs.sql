@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2022 at 06:26 AM
+-- Generation Time: May 28, 2022 at 07:25 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -33,7 +33,8 @@ CREATE TABLE `bundle` (
   `bu_id` double NOT NULL,
   `bu_name` varchar(50) NOT NULL,
   `bu_price` double NOT NULL,
-  `bu_status` int(11) NOT NULL
+  `bu_status` int(11) NOT NULL,
+  `bu_description` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -85,7 +86,10 @@ CREATE TABLE `ingredient` (
 INSERT INTO `ingredient` (`in_id`, `in_name`, `in_price`, `in_stock`, `in_status`) VALUES
 (1, 'bahan2', 123, 1, 1),
 (2, 'asds', 213, 2, 1),
-(3, 'tes', 12, 0, 1);
+(3, 'tes', 12, 0, 1),
+(4, 'bahanlol', 2, 3, 1),
+(5, 'hihihiha', 1, 6, 1),
+(6, 'tf', 123123, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -99,8 +103,18 @@ CREATE TABLE `menu` (
   `me_price` double NOT NULL,
   `me_stock` double NOT NULL,
   `me_ty_id` double NOT NULL,
-  `me_status` int(11) NOT NULL
+  `me_status` int(11) NOT NULL,
+  `me_description` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `menu`
+--
+
+INSERT INTO `menu` (`me_id`, `me_name`, `me_price`, `me_stock`, `me_ty_id`, `me_status`, `me_description`) VALUES
+(1, 'sample1', 1, 1, 1, 1, 'sample'),
+(2, 'drink', 1, 1, 2, 1, 'drink'),
+(3, 'dessert', 1, 1, 3, 1, 'dessert');
 
 -- --------------------------------------------------------
 
@@ -123,7 +137,8 @@ CREATE TABLE `menu_bundle` (
 CREATE TABLE `menu_ingredient` (
   `mi_id` double NOT NULL,
   `mi_me_id` double NOT NULL,
-  `mi_bu_id` double NOT NULL
+  `mi_in_id` double NOT NULL,
+  `mi_quantity` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -156,6 +171,15 @@ CREATE TABLE `type` (
   `ty_id` double NOT NULL,
   `ty_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `type`
+--
+
+INSERT INTO `type` (`ty_id`, `ty_name`) VALUES
+(1, 'food'),
+(2, 'beverage'),
+(3, 'dessert');
 
 -- --------------------------------------------------------
 
@@ -273,13 +297,13 @@ ALTER TABLE `htrans`
 -- AUTO_INCREMENT for table `ingredient`
 --
 ALTER TABLE `ingredient`
-  MODIFY `in_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `in_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `me_id` double NOT NULL AUTO_INCREMENT;
+  MODIFY `me_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `menu_bundle`
@@ -303,7 +327,7 @@ ALTER TABLE `privilege`
 -- AUTO_INCREMENT for table `type`
 --
 ALTER TABLE `type`
-  MODIFY `ty_id` double NOT NULL AUTO_INCREMENT;
+  MODIFY `ty_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -14,6 +14,8 @@ namespace Project_Staff
     public partial class Admin_Menu_Add : Form
     {
         int menu_id;
+        List<string> names = new List<string>();
+        List<NumericUpDown> counts = new List<NumericUpDown>();
 
         MySqlConnection conn;
         string connString;
@@ -74,6 +76,35 @@ namespace Project_Staff
             cbType.SelectedIndex = 0;
         }
 
+
+        private Label createLabel(string text)
+        {
+            Label label = new Label();
+            label.Text = text;
+            label.Location = new Point(10, 10);
+            label.Font = new Font("Segoe UI", 12);
+
+            return label;
+        }
+
+        private Panel createPanel(int x, int y)
+        {
+            Panel panel = new Panel();
+            panel.Size = new Size(142, 80);
+            panel.Location = new Point(10 * (x + 1) + x * 142, 10 * (y + 1) + y * 80);
+            panel.BackColor = Color.White;
+
+            return panel;
+        }
+
+        private NumericUpDown createNup()
+        {
+            NumericUpDown nup = new NumericUpDown();
+            nup.Location = new Point(10, 40);
+
+            return nup;
+        }
+
         private void loadIngredients()
         {
             string query = $"select in_name as 'Name' from ingredient";
@@ -89,16 +120,16 @@ namespace Project_Staff
             {
                 string menu_name = rdr["Name"].ToString();
 
-                Panel pnl = new Panel();
-                Label lblName = new Label();
-                lblName.Text = menu_name;
-                lblName.Location = new Point(10, 10);
-                lblName.Font = new Font("Segoe UI", 12);
+                Panel pnl = createPanel(x, y) ;
+                Label lblName = createLabel(menu_name);
+                NumericUpDown nup = createNup();
+                
                 pnl.Controls.Add(lblName);
-                pnl.Size = new Size(142, 80);
-                pnl.Location = new Point(10 * (x + 1) + x * 142, 10 * (y + 1) + y * 80);
-                pnl.BackColor = Color.White;
+                pnl.Controls.Add(nup);
                 pnlContainer.Controls.Add(pnl);
+
+                names.Add(menu_name);
+                counts.Add(nup);
 
                 x++;
                 if (x == 4)
