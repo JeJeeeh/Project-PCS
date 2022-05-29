@@ -41,7 +41,7 @@ namespace Project_Staff
 
         public void loadDataGrid()
         {
-            string query = "select m.me_id as 'ID', m.me_name as 'Name', m.me_price as 'Price', m.me_stock as 'Stock', t.ty_name as 'Type' from menu m join type t on m.me_ty_id = t.ty_id where m.me_status = 1 order by 1";
+            string query = "select bu_id as 'ID', bu_name as 'Name', bu_price as 'Price', bu_description as 'Description' from bundle where bu_status = 1 order by 1";
             MySqlCommand cmd = new MySqlCommand(query, conn);
 
             conn.Open();
