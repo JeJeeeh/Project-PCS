@@ -16,16 +16,18 @@ namespace Project_Staff
         int menu_id;
         List<string> names = new List<string>();
         List<NumericUpDown> counts = new List<NumericUpDown>();
+        Admin_Menu owner;
 
         MySqlConnection conn;
         string connString;
         DataSet dsMenu;
         DataTable dtMenu;
 
-        public Admin_Menu_Add(int menu_id)
+        public Admin_Menu_Add(int menu_id, Admin_Menu owner)
         {
             InitializeComponent();
 
+            this.owner = owner;
             this.menu_id = menu_id;
             connectDB();
             loadIngredients();
@@ -262,7 +264,6 @@ namespace Project_Staff
                     }
                 }
 
-                //TUTUP KONEKSI
                 conn.Close();
             }
             
@@ -291,6 +292,11 @@ namespace Project_Staff
                     conn.Close();
                 }
             }
+        }
+
+        private void Admin_Menu_Add_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            owner.loadDataGrid();
         }
     }
 }

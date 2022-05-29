@@ -160,6 +160,9 @@
     <EmbeddedResource Include="Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Admin_Bundle.resx">
+      <DependentUpon>Admin_Bundle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin_Ingredient.resx">
       <DependentUpon>Admin_Ingredient.cs</DependentUpon>
     </EmbeddedResource>

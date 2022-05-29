@@ -29,12 +29,141 @@ namespace Project_Staff
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.btnClearFilter = new System.Windows.Forms.Button();
+            this.btnFilter = new System.Windows.Forms.Button();
+            this.cbFilter = new System.Windows.Forms.ComboBox();
+            this.dgvStaff = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnAdd.FlatAppearance.BorderSize = 0;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnAdd.Location = new System.Drawing.Point(562, 9);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(110, 57);
+            this.btnAdd.TabIndex = 78;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.BackColor = System.Drawing.Color.Red;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnLogout.Location = new System.Drawing.Point(678, 8);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(110, 57);
+            this.btnLogout.TabIndex = 77;
+            this.btnLogout.Text = "Back";
+            this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // btnClearFilter
+            // 
+            this.btnClearFilter.Location = new System.Drawing.Point(397, 40);
+            this.btnClearFilter.Name = "btnClearFilter";
+            this.btnClearFilter.Size = new System.Drawing.Size(101, 27);
+            this.btnClearFilter.TabIndex = 76;
+            this.btnClearFilter.Text = "Clear";
+            this.btnClearFilter.UseVisualStyleBackColor = true;
+            // 
+            // btnFilter
+            // 
+            this.btnFilter.Location = new System.Drawing.Point(290, 40);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(101, 27);
+            this.btnFilter.TabIndex = 75;
+            this.btnFilter.Text = "Filter";
+            this.btnFilter.UseVisualStyleBackColor = true;
+            // 
+            // cbFilter
+            // 
+            this.cbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFilter.FormattingEnabled = true;
+            this.cbFilter.Items.AddRange(new object[] {
+            "Ready",
+            "Out of Stock"});
+            this.cbFilter.Location = new System.Drawing.Point(140, 42);
+            this.cbFilter.Name = "cbFilter";
+            this.cbFilter.Size = new System.Drawing.Size(144, 24);
+            this.cbFilter.TabIndex = 74;
+            // 
+            // dgvStaff
+            // 
+            this.dgvStaff.AllowUserToAddRows = false;
+            this.dgvStaff.AllowUserToDeleteRows = false;
+            this.dgvStaff.AllowUserToResizeColumns = false;
+            this.dgvStaff.AllowUserToResizeRows = false;
+            this.dgvStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStaff.Location = new System.Drawing.Point(12, 74);
+            this.dgvStaff.Name = "dgvStaff";
+            this.dgvStaff.ReadOnly = true;
+            this.dgvStaff.RowHeadersVisible = false;
+            this.dgvStaff.RowHeadersWidth = 51;
+            this.dgvStaff.RowTemplate.Height = 24;
+            this.dgvStaff.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvStaff.Size = new System.Drawing.Size(776, 368);
+            this.dgvStaff.TabIndex = 73;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(14, 45);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(78, 17);
+            this.label2.TabIndex = 72;
+            this.label2.Text = "Bundle List";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(169, 25);
+            this.label1.TabIndex = 71;
+            this.label1.Text = "Welcome Admin";
+            // 
+            // Admin_Bundle
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 456);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.btnLogout);
+            this.Controls.Add(this.btnClearFilter);
+            this.Controls.Add(this.btnFilter);
+            this.Controls.Add(this.cbFilter);
+            this.Controls.Add(this.dgvStaff);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Name = "Admin_Bundle";
             this.Text = "Admin_Bundle";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Button btnClearFilter;
+        private System.Windows.Forms.Button btnFilter;
+        private System.Windows.Forms.ComboBox cbFilter;
+        private System.Windows.Forms.DataGridView dgvStaff;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

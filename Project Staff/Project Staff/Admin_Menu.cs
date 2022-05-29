@@ -61,7 +61,7 @@ namespace Project_Staff
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Admin_Menu_Add admin = new Admin_Menu_Add(0);
+            Admin_Menu_Add admin = new Admin_Menu_Add(0, this);
             admin.Show();
         }
 
@@ -78,7 +78,7 @@ namespace Project_Staff
             {
                 int menu_id = Convert.ToInt32(dgvStaff.Rows[rowIdx].Cells[0].Value.ToString());
 
-                Admin_Menu_Add admin = new Admin_Menu_Add(menu_id);
+                Admin_Menu_Add admin = new Admin_Menu_Add(menu_id, this);
                 admin.ShowDialog();
                 loadDataGrid();
             }

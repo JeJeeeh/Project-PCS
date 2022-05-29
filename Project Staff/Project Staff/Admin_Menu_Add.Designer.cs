@@ -313,6 +313,7 @@ namespace Project_Staff
             this.Controls.Add(this.label1);
             this.Name = "Admin_Menu_Add";
             this.Text = "Admin_Menu_Add";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Admin_Menu_Add_FormClosed);
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.ResumeLayout(false);
