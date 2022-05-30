@@ -81,7 +81,7 @@ namespace Project_Staff
                 }
                 else if (privilege == 3)
                 {
-                    Cashier cashier = new Cashier();
+                    Cashier cashier = new Cashier(username);
                     Hide();
                     cashier.ShowDialog();
                     Show();

@@ -15,9 +15,14 @@ namespace Project_Staff
     {
         MySqlConnection conn;
         string connString;
-        public Cashier()
+        string username;
+        public Cashier(string username)
         {
             InitializeComponent();
+
+            this.username = username;
+
+            lWelcome.Text = "Welcome " + username;
 
             connectDB();
         }
