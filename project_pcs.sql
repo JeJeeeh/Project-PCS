@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2022 at 01:22 AM
+-- Generation Time: Jun 01, 2022 at 05:44 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -84,12 +84,17 @@ CREATE TABLE `ingredient` (
 --
 
 INSERT INTO `ingredient` (`in_id`, `in_name`, `in_price`, `in_stock`, `in_status`) VALUES
-(1, 'bahan2', 123, 1, 1),
-(2, 'asds', 213, 2, 1),
-(3, 'tes', 12, 0, 1),
-(4, 'bahanlol', 2, 3, 1),
-(5, 'hihihiha', 1, 6, 1),
-(6, 'tf', 123123, 2, 1);
+(1, 'Roti Bun', 12000, 2, 1),
+(2, 'Keju', 5000, 13, 1),
+(3, 'Selada', 4000, 2, 1),
+(4, 'Beef Patty', 8000, 6, 1),
+(5, 'Kentang', 4000, 8, 1),
+(6, 'Chicken Patty', 6000, 5, 1),
+(7, 'Cone', 2000, 13, 1),
+(8, 'Es Krim', 3000, 5, 1),
+(9, 'Tepung', 2000, 4, 1),
+(10, 'Ayam Paha Bawah', 20000, 10, 1),
+(11, 'Ayam Paha Atas', 30000, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -112,7 +117,10 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`me_id`, `me_name`, `me_price`, `me_stock`, `me_ty_id`, `me_status`, `me_description`) VALUES
-(1, 'menu1', 123, 0, 1, 1, 'menu1');
+(1, 'Hamburger', 40000, 0, 1, 1, 'Hamburger enak puol claire'),
+(2, 'Kentang Goreng', 10000, 0, 1, 1, 'Kentang Goreng'),
+(3, 'Ice Cream Cone', 10000, 0, 3, 1, 'Es Krim bukan peju nya r'),
+(4, 'Sprite', 4000, 0, 1, 1, 'Sprite pake tepung');
 
 -- --------------------------------------------------------
 
@@ -123,7 +131,8 @@ INSERT INTO `menu` (`me_id`, `me_name`, `me_price`, `me_stock`, `me_ty_id`, `me_
 CREATE TABLE `menu_bundle` (
   `mb_id` double NOT NULL,
   `mb_me_id` double NOT NULL,
-  `mb_bu_id` double NOT NULL
+  `mb_bu_id` double NOT NULL,
+  `mb_quantity` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -144,12 +153,13 @@ CREATE TABLE `menu_ingredient` (
 --
 
 INSERT INTO `menu_ingredient` (`mi_id`, `mi_me_id`, `mi_in_id`, `mi_quantity`) VALUES
-(13, 1, 1, 2),
-(14, 1, 1, 2),
-(15, 1, 1, 2),
-(16, 1, 1, 2),
-(17, 1, 5, 1),
-(18, 1, 5, 1);
+(23, 1, 1, 1),
+(24, 1, 2, 1),
+(25, 1, 3, 1),
+(26, 1, 4, 1),
+(27, 3, 7, 1),
+(28, 3, 8, 1),
+(29, 4, 9, 1);
 
 -- --------------------------------------------------------
 
@@ -295,7 +305,7 @@ ALTER TABLE `menu_bundle`
 -- AUTO_INCREMENT for table `menu_ingredient`
 --
 ALTER TABLE `menu_ingredient`
-  MODIFY `mi_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `mi_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `privilege`
