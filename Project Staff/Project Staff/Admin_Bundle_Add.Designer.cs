@@ -157,6 +157,7 @@ namespace Project_Staff
             this.btnSave.TabIndex = 80;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnBack
             // 
