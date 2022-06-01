@@ -79,3 +79,4 @@ C:\Users\jason\OneDrive\Documents\Kuliah\Sem 4\PCS\Project-PCS\Project Staff\Pro
 C:\Users\jason\OneDrive\Documents\Kuliah\Sem 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.Cashier_CashPayment.resources
 C:\Users\jason\OneDrive\Documents\Kuliah\Sem 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.Cashier_OrderReady.resources
 C:\Users\jason\OneDrive\Documents\Kuliah\Sem 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.Kitchen.resources
+C:\Users\jason\OneDrive\Documents\Kuliah\Sem 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.Admin_Bundle_Add.resources

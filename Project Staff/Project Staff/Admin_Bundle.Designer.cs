@@ -53,6 +53,7 @@ namespace Project_Staff
             this.btnAdd.TabIndex = 78;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnLogout
             // 
@@ -114,6 +115,7 @@ namespace Project_Staff
             this.dgvStaff.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvStaff.Size = new System.Drawing.Size(776, 368);
             this.dgvStaff.TabIndex = 73;
+            this.dgvStaff.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvStaff_CellMouseDoubleClick);
             // 
             // label2
             // 

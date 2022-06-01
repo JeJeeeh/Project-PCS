@@ -46,5 +46,13 @@ namespace Project_Staff
             admin.ShowDialog();
             Show();
         }
+
+        private void btnBundle_Click(object sender, EventArgs e)
+        {
+            Hide();
+            Admin_Bundle admin = new Admin_Bundle();
+            admin.ShowDialog();
+            Show();
+        }
     }
 }

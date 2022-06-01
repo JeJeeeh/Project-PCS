@@ -210,6 +210,59 @@ namespace Project_Staff
                     cmd.ExecuteNonQuery();
                     conn.Close();
 
+                    conn.Open();
+                    using (MySqlTransaction obTrans = conn.BeginTransaction())
+                    {
+                        try
+                        {
+
+                            query = $"delete from menu_ingredient where mi_me_id = {tbId.Text}";
+                            try
+                            {
+                                cmd = new MySqlCommand(query, conn);
+                                cmd.ExecuteNonQuery();
+
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                                conn.Close();
+                            }
+
+                            cmd = new MySqlCommand();
+                            cmd.Connection = conn;
+                            cmd.CommandText = $"update menu set me_name = '{tbName.Text}', me_price = {tbPrice.Text}, me_ty_id = {cbType.SelectedValue}, me_description = '{rtbDescription.Text}' where me_id = {tbId.Text}";
+
+                            cmd.ExecuteNonQuery();
+
+                            for (int i = 0; i < counts.Count; i++)
+                            {
+                                if (counts.ElementAt(i).Value > 0)
+                                {
+                                    cmd.Parameters.Clear();
+                                    cmd.CommandText = "insert into menu_ingredient(mi_me_id, mi_in_id, mi_quantity) values(@menu, @ingredient, @quantity)";
+                                    cmd.Parameters.Add(new MySqlParameter("@menu", tbId.Text));
+                                    cmd.Parameters.Add(new MySqlParameter("@ingredient", names.ElementAt(i).ToString()));
+                                    cmd.Parameters.Add(new MySqlParameter("@quantity", counts.ElementAt(i).Value));
+                                    cmd.ExecuteNonQuery();
+                                }
+
+                            }
+
+                            obTrans.Commit();
+
+                            MessageBox.Show("Menu Saved!");
+                            Dispose();
+                        }
+                        catch (MySqlException ex)
+                        {
+                            MessageBox.Show(ex.Message);
+
+                            obTrans.Rollback();
+                        }
+                    }
+                    conn.Close();
+
                     Dispose();
                 }
                 catch (Exception ex)
@@ -247,8 +300,9 @@ namespace Project_Staff
                                 cmd.Parameters.Add(new MySqlParameter("@menu", tbId.Text));
                                 cmd.Parameters.Add(new MySqlParameter("@ingredient", names.ElementAt(i).ToString()));
                                 cmd.Parameters.Add(new MySqlParameter("@quantity", counts.ElementAt(i).Value));
+                                cmd.ExecuteNonQuery();
                             }
-                            cmd.ExecuteNonQuery();
+                            
                         }
 
                         obTrans.Commit();

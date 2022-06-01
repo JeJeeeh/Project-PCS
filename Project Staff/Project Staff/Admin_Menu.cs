@@ -90,5 +90,10 @@ namespace Project_Staff
         {
 
         }
+
+        private void btnClearFilter_Click(object sender, EventArgs e)
+        {
+            loadDataGrid();
+        }
     }
 }
