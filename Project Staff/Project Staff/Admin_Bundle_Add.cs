@@ -231,11 +231,10 @@ namespace Project_Staff
                     {
                         MySqlCommand cmd = new MySqlCommand();
                         cmd.Connection = conn;
-                        cmd.CommandText = "insert into bundle(bu_id, bu_name, bu_price, bu_stock, bu_status, bu_description) values(@id, @name, @price, @stock, @status, @description)";
+                        cmd.CommandText = "insert into bundle(bu_id, bu_name, bu_price, bu_status, bu_description) values(@id, @name, @price, @status, @description)";
                         cmd.Parameters.Add(new MySqlParameter("@id", tbId.Text));
                         cmd.Parameters.Add(new MySqlParameter("@name", tbName.Text));
                         cmd.Parameters.Add(new MySqlParameter("@price", Convert.ToInt32(tbPrice.Text)));
-                        cmd.Parameters.Add(new MySqlParameter("@stock", "0"));
                         cmd.Parameters.Add(new MySqlParameter("@status", "1"));
                         cmd.Parameters.Add(new MySqlParameter("@description", rtbDescription.Text));
 
