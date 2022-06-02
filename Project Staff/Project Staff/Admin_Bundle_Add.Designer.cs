@@ -55,6 +55,7 @@ namespace Project_Staff
             this.rtbDescription.Size = new System.Drawing.Size(307, 96);
             this.rtbDescription.TabIndex = 92;
             this.rtbDescription.Text = "";
+            this.rtbDescription.TextChanged += new System.EventHandler(this.rtbDescription_TextChanged);
             // 
             // label9
             // 
@@ -71,6 +72,7 @@ namespace Project_Staff
             this.tbPrice.Name = "tbPrice";
             this.tbPrice.Size = new System.Drawing.Size(307, 22);
             this.tbPrice.TabIndex = 88;
+            this.tbPrice.TextChanged += new System.EventHandler(this.tbPrice_TextChanged);
             // 
             // tbName
             // 
@@ -78,6 +80,7 @@ namespace Project_Staff
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(307, 22);
             this.tbName.TabIndex = 89;
+            this.tbName.TextChanged += new System.EventHandler(this.tbName_TextChanged);
             // 
             // tbId
             // 
@@ -143,6 +146,7 @@ namespace Project_Staff
             this.btnDelete.TabIndex = 81;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnSave
             // 
@@ -181,6 +185,7 @@ namespace Project_Staff
             this.btnClearFilter.TabIndex = 78;
             this.btnClearFilter.Text = "Clear";
             this.btnClearFilter.UseVisualStyleBackColor = true;
+            this.btnClearFilter.Click += new System.EventHandler(this.btnClearFilter_Click);
             // 
             // btnFilter
             // 

@@ -195,6 +195,7 @@ namespace Project_Staff
                 }
             }
 
+            rdr.Close();
             conn.Close();
 
         }
@@ -252,9 +253,6 @@ namespace Project_Staff
 
                             cmd = new MySqlCommand();
                             cmd.Connection = conn;
-                            cmd.CommandText = $"update menu set me_name = '{tbName.Text}', me_price = {tbPrice.Text}, me_ty_id = {cbType.SelectedValue}, me_description = '{rtbDescription.Text}' where me_id = {tbId.Text}";
-
-                            cmd.ExecuteNonQuery();
 
                             for (int i = 0; i < counts.Count; i++)
                             {
@@ -359,7 +357,52 @@ namespace Project_Staff
                     cmd.ExecuteNonQuery();
                     conn.Close();
 
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    conn.Close();
+                }
+
+                query = $"delete from menu_ingredient where mi_me_id = '{tbId.Text}'";
+                try
+                {
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    conn.Close();
+                }
+
+                query = $"update bundle b join menu_bundle mb on b.bu_id = mb.mb_bu_id join menu m on m.me_id = mb.mb_me_id set b.bu_status = 0 where m.me_id = {tbId.Text}";
+                try
+                {
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
                     Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    conn.Close();
+                }
+
+                query = $"delete from menu_bundle where mb_me_id = '{tbId.Text}'";
+                try
+                {
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
                 }
                 catch (Exception ex)
                 {

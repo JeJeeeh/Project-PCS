@@ -77,6 +77,7 @@ namespace Project_Staff
             this.btnClearFilter.TabIndex = 76;
             this.btnClearFilter.Text = "Clear";
             this.btnClearFilter.UseVisualStyleBackColor = true;
+            this.btnClearFilter.Click += new System.EventHandler(this.btnClearFilter_Click);
             // 
             // btnFilter
             // 

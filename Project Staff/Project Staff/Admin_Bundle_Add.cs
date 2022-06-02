@@ -75,6 +75,7 @@ namespace Project_Staff
                 rtbDescription.Text = rdr["Desc"].ToString();
             }
 
+            rdr.Close();
             conn.Close();
         }
 
@@ -148,7 +149,7 @@ namespace Project_Staff
 
             conn.Close();
 
-            query = $"select mi_in_id as 'ingredient_id', mi_quantity as 'quantity' from menu_ingredient where mi_me_id = {bundle_id}";
+            query = $"select mb_me_id as 'menu_id', mb_quantity as 'quantity' from menu_bundle where mb_bu_id = {bundle_id}";
 
             cmd = new MySqlCommand(query, conn);
 
@@ -159,13 +160,14 @@ namespace Project_Staff
             {
                 for (int i = 0; i < names.Count; i++)
                 {
-                    if (names.ElementAt(i).Equals(rdr["ingredient_id"].ToString()))
+                    if (names.ElementAt(i).Equals(rdr["menu_id"].ToString()))
                     {
                         counts.ElementAt(i).Value = Convert.ToInt32(rdr["quantity"].ToString());
                     }
                 }
             }
 
+            rdr.Close();
             conn.Close();
         }
 
@@ -173,7 +175,7 @@ namespace Project_Staff
         {
             if (bundle_id > 0)
             {
-                string query = $"update menu set me_name = '{tbName.Text}', me_price = {tbPrice.Text}, me_description = '{rtbDescription.Text}' where me_id = {tbId.Text}";
+                string query = $"update bundle set bu_name = '{tbName.Text}', bu_price = {tbPrice.Text}, bu_description = '{rtbDescription.Text}' where bu_id = {tbId.Text}";
                 try
                 {
                     conn.Open();
@@ -187,7 +189,7 @@ namespace Project_Staff
                         try
                         {
 
-                            query = $"delete from menu_ingredient where mi_me_id = {tbId.Text}";
+                            query = $"delete from menu_bundle where mb_bu_id = {tbId.Text}";
                             try
                             {
                                 cmd = new MySqlCommand(query, conn);
@@ -202,18 +204,15 @@ namespace Project_Staff
 
                             cmd = new MySqlCommand();
                             cmd.Connection = conn;
-                            cmd.CommandText = $"update menu set me_name = '{tbName.Text}', me_price = {tbPrice.Text}, me_description = '{rtbDescription.Text}' where me_id = {tbId.Text}";
-
-                            cmd.ExecuteNonQuery();
 
                             for (int i = 0; i < counts.Count; i++)
                             {
                                 if (counts.ElementAt(i).Value > 0)
                                 {
                                     cmd.Parameters.Clear();
-                                    cmd.CommandText = "insert into menu_ingredient(mi_me_id, mi_in_id, mi_quantity) values(@menu, @ingredient, @quantity)";
-                                    cmd.Parameters.Add(new MySqlParameter("@menu", tbId.Text));
-                                    cmd.Parameters.Add(new MySqlParameter("@ingredient", names.ElementAt(i).ToString()));
+                                    cmd.CommandText = "insert into menu_bundle(mb_me_id, mb_bu_id, mb_quantity) values(@menu, @bundle, @quantity)";
+                                    cmd.Parameters.Add(new MySqlParameter("@menu", names.ElementAt(i).ToString()));
+                                    cmd.Parameters.Add(new MySqlParameter("@bundle", tbId.Text));
                                     cmd.Parameters.Add(new MySqlParameter("@quantity", counts.ElementAt(i).Value));
                                     cmd.ExecuteNonQuery();
                                 }
@@ -304,6 +303,31 @@ namespace Project_Staff
 
                 tbId.Text = count;
             }
+        }
+
+        private void tbName_TextChanged(object sender, EventArgs e)
+        {
+            genId();
+        }
+
+        private void tbPrice_TextChanged(object sender, EventArgs e)
+        {
+            genId();
+        }
+
+        private void rtbDescription_TextChanged(object sender, EventArgs e)
+        {
+            genId();
+        }
+
+        private void btnClearFilter_Click(object sender, EventArgs e)
+        {
+            loadMenu();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

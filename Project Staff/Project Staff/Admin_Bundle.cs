@@ -19,6 +19,9 @@ namespace Project_Staff
         public Admin_Bundle()
         {
             InitializeComponent();
+
+            connectDB();
+            dgvStaff.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         public void connectDB()
@@ -77,6 +80,11 @@ namespace Project_Staff
                 admin.ShowDialog();
                 loadDataGrid();
             }
+        }
+
+        private void btnClearFilter_Click(object sender, EventArgs e)
+        {
+            loadDataGrid();
         }
     }
 }
