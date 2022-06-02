@@ -176,6 +176,27 @@ namespace Project_Staff
             }
 
             conn.Close();
+
+            query = $"select mi_in_id as 'ingredient_id', mi_quantity as 'quantity' from menu_ingredient where mi_me_id = {menu_id}";
+
+            cmd = new MySqlCommand(query, conn);
+
+            conn.Open();
+            rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                for (int i = 0; i < names.Count; i++)
+                {
+                    if (names.ElementAt(i).Equals(rdr["ingredient_id"].ToString()))
+                    {
+                        counts.ElementAt(i).Value = Convert.ToInt32(rdr["quantity"].ToString());
+                    }
+                }
+            }
+
+            conn.Close();
+
         }
 
         private void btnBack_Click(object sender, EventArgs e)

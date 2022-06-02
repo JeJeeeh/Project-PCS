@@ -147,6 +147,26 @@ namespace Project_Staff
             }
 
             conn.Close();
+
+            query = $"select mi_in_id as 'ingredient_id', mi_quantity as 'quantity' from menu_ingredient where mi_me_id = {bundle_id}";
+
+            cmd = new MySqlCommand(query, conn);
+
+            conn.Open();
+            rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                for (int i = 0; i < names.Count; i++)
+                {
+                    if (names.ElementAt(i).Equals(rdr["ingredient_id"].ToString()))
+                    {
+                        counts.ElementAt(i).Value = Convert.ToInt32(rdr["quantity"].ToString());
+                    }
+                }
+            }
+
+            conn.Close();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -246,8 +266,8 @@ namespace Project_Staff
                             {
                                 cmd.Parameters.Clear();
                                 cmd.CommandText = "insert into menu_bundle(mb_me_id, mb_bu_id, mb_quantity) values(@menu, @bundle, @quantity)";
-                                cmd.Parameters.Add(new MySqlParameter("@menu", tbId.Text));
-                                cmd.Parameters.Add(new MySqlParameter("@bundle", names.ElementAt(i).ToString()));
+                                cmd.Parameters.Add(new MySqlParameter("@menu", names.ElementAt(i).ToString()));
+                                cmd.Parameters.Add(new MySqlParameter("@bundle", tbId.Text));
                                 cmd.Parameters.Add(new MySqlParameter("@quantity", counts.ElementAt(i).Value));
                                 cmd.ExecuteNonQuery();
                             }
@@ -268,6 +288,21 @@ namespace Project_Staff
                 }
 
                 conn.Close();
+            }
+        }
+
+        private void genId()
+        {
+            if (tbId.Text.Equals(""))
+            {
+                string query = "select (count(*) + 1) from bundle";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                conn.Open();
+                string count = cmd.ExecuteScalar().ToString();
+                conn.Close();
+
+                tbId.Text = count;
             }
         }
     }
