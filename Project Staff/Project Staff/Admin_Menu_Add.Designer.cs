@@ -81,6 +81,7 @@ namespace Project_Staff
             this.btnFilter.TabIndex = 53;
             this.btnFilter.Text = "Search";
             this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // label2
             // 

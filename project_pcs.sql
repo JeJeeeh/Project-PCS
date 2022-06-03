@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2022 at 05:44 PM
+-- Generation Time: Jun 03, 2022 at 07:53 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -37,6 +37,14 @@ CREATE TABLE `bundle` (
   `bu_description` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `bundle`
+--
+
+INSERT INTO `bundle` (`bu_id`, `bu_name`, `bu_price`, `bu_status`, `bu_description`) VALUES
+(1, 'Paket Hamburger', 50000, 1, 'Hamburger + Kentang'),
+(2, 'Paket Dessert', 20000, 1, 'Es Krip + Sprite');
+
 -- --------------------------------------------------------
 
 --
@@ -51,6 +59,15 @@ CREATE TABLE `dtrans` (
   `dt_status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `dtrans`
+--
+
+INSERT INTO `dtrans` (`dt_id`, `dt_ht_id`, `dt_me_id`, `dt_amount`, `dt_status`) VALUES
+(1, 1, 1, 2, 1),
+(2, 1, 3, 1, 1),
+(3, 1, 4, 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -64,6 +81,13 @@ CREATE TABLE `htrans` (
   `ht_date` date NOT NULL,
   `ht_status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `htrans`
+--
+
+INSERT INTO `htrans` (`ht_id`, `ht_invoice`, `ht_total`, `ht_date`, `ht_status`) VALUES
+(1, '04062022001', 100000, '2022-06-04', 1);
 
 -- --------------------------------------------------------
 
@@ -120,7 +144,7 @@ INSERT INTO `menu` (`me_id`, `me_name`, `me_price`, `me_stock`, `me_ty_id`, `me_
 (1, 'Hamburger', 40000, 0, 1, 1, 'Hamburger enak puol claire'),
 (2, 'Kentang Goreng', 10000, 0, 1, 1, 'Kentang Goreng'),
 (3, 'Ice Cream Cone', 10000, 0, 3, 1, 'Es Krim bukan peju nya r'),
-(4, 'Sprite', 4000, 0, 1, 1, 'Sprite pake tepung');
+(4, 'Sprite', 4000, 0, 2, 1, 'Sprite pake tepung');
 
 -- --------------------------------------------------------
 
@@ -134,6 +158,16 @@ CREATE TABLE `menu_bundle` (
   `mb_bu_id` double NOT NULL,
   `mb_quantity` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `menu_bundle`
+--
+
+INSERT INTO `menu_bundle` (`mb_id`, `mb_me_id`, `mb_bu_id`, `mb_quantity`) VALUES
+(3, 1, 1, 1),
+(4, 2, 1, 1),
+(6, 3, 2, 1),
+(7, 4, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -159,7 +193,8 @@ INSERT INTO `menu_ingredient` (`mi_id`, `mi_me_id`, `mi_in_id`, `mi_quantity`) V
 (26, 1, 4, 1),
 (27, 3, 7, 1),
 (28, 3, 8, 1),
-(29, 4, 9, 1);
+(37, 4, 2, 1),
+(38, 4, 9, 1);
 
 -- --------------------------------------------------------
 
@@ -299,13 +334,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `menu_bundle`
 --
 ALTER TABLE `menu_bundle`
-  MODIFY `mb_id` double NOT NULL AUTO_INCREMENT;
+  MODIFY `mb_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `menu_ingredient`
 --
 ALTER TABLE `menu_ingredient`
-  MODIFY `mi_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `mi_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `privilege`

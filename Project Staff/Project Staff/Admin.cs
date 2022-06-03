@@ -13,9 +13,50 @@ namespace Project_Staff
 {
     public partial class Admin : Form
     {
+        MySqlConnection conn;
+        string connString;
+        DataSet dsTransaction;
+        DataTable dtTransaction;
+
         public Admin()
         {
             InitializeComponent();
+
+            connectDB();
+            dgvTransaction.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
+
+        public void connectDB()
+        {
+            connString = "server = localhost; uid = root; database = project_pcs";
+            conn = new MySqlConnection(connString);
+
+            try
+            {
+                conn.Open();
+                conn.Close();
+
+                loadDataGrid();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+            }
+        }
+
+        public void loadDataGrid()
+        {
+            string query = "select ht_id as 'ID', ht_invoice as 'Invoice', ht_total as 'Total', ht_date as 'Date' from htrans where ht_status = 1 order by 1";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+
+            conn.Open();
+            cmd.ExecuteReader();
+            conn.Close();
+
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            dsTransaction = new DataSet();
+            da.Fill(dsTransaction);
+            dgvTransaction.DataSource = dsTransaction.Tables[0].DefaultView;
         }
 
         private void btnLogout_Click(object sender, EventArgs e)

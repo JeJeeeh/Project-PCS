@@ -90,6 +90,7 @@ namespace Project_Staff
             this.dgvTransaction.Location = new System.Drawing.Point(273, 77);
             this.dgvTransaction.Name = "dgvTransaction";
             this.dgvTransaction.ReadOnly = true;
+            this.dgvTransaction.RowHeadersVisible = false;
             this.dgvTransaction.RowHeadersWidth = 51;
             this.dgvTransaction.RowTemplate.Height = 24;
             this.dgvTransaction.Size = new System.Drawing.Size(771, 428);

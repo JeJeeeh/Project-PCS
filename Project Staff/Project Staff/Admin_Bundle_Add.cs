@@ -327,7 +327,42 @@ namespace Project_Staff
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            var confirmResult = MessageBox.Show("Are you sure to delete bundle?",
+                                     "Confirm Delete",
+                                     MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                string query = $"update bundle set bu_status = 0 where bu_id = '{tbId.Text}'";
+                try
+                {
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
 
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    conn.Close();
+                }
+
+                query = $"delete from menu_bundle where mb_bu_id = '{tbId.Text}'";
+                try
+                {
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+                    Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    conn.Close();
+                }
+            }
         }
     }
 }

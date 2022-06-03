@@ -148,6 +148,8 @@ namespace Project_Staff
 
         private void loadMenu(int menu_id)
         {
+            pnlContainer.Controls.Clear();
+
             string query = $"select m.me_id as 'ID', m.me_name as 'Name', m.me_price as 'Price', m.me_description 'Desc', t.ty_name as 'Type' from menu m join type t on m.me_ty_id = t.ty_id where me_id = {menu_id}";
 
             MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -387,7 +389,6 @@ namespace Project_Staff
                     cmd.ExecuteNonQuery();
                     conn.Close();
 
-                    Dispose();
                 }
                 catch (Exception ex)
                 {
@@ -403,6 +404,7 @@ namespace Project_Staff
                     cmd.ExecuteNonQuery();
                     conn.Close();
 
+                    Dispose();
                 }
                 catch (Exception ex)
                 {
@@ -415,6 +417,61 @@ namespace Project_Staff
         private void Admin_Menu_Add_FormClosed(object sender, FormClosedEventArgs e)
         {
             owner.loadDataGrid();
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            pnlContainer.Controls.Clear();
+
+            string query = $"select m.me_id as 'ID', m.me_name as 'Name', m.me_price as 'Price', m.me_description 'Desc', t.ty_name as 'Type' from menu m join type t on m.me_ty_id = t.ty_id where me_id = {menu_id}";
+
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+
+            conn.Open();
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                tbId.Text = rdr["ID"].ToString();
+                tbName.Text = rdr["Name"].ToString();
+                tbPrice.Text = rdr["Price"].ToString();
+                rtbDescription.Text = rdr["Desc"].ToString();
+
+                string type = rdr["Type"].ToString();
+                int i;
+                for (i = 0; i < cbType.Items.Count; i++)
+                {
+                    string value = cbType.GetItemText(cbType.Items[i]);
+                    if (type.Equals(value))
+                    {
+                        break;
+                    }
+                }
+                cbType.SelectedIndex = i;
+            }
+
+            conn.Close();
+
+            query = $"select mi_in_id as 'ingredient_id', mi_quantity as 'quantity' from menu_ingredient where mi_me_id = {menu_id}";
+
+            cmd = new MySqlCommand(query, conn);
+
+            conn.Open();
+            rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                for (int i = 0; i < names.Count; i++)
+                {
+                    if (names.ElementAt(i).Equals(rdr["ingredient_id"].ToString()))
+                    {
+                        counts.ElementAt(i).Value = Convert.ToInt32(rdr["quantity"].ToString());
+                    }
+                }
+            }
+
+            rdr.Close();
+            conn.Close();
         }
     }
 }
