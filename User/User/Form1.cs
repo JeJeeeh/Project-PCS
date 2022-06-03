@@ -69,22 +69,45 @@ namespace User
 
         private void getmenu()
         {
-            string query = $"SELECT me_name as texts FROM menu where me_ty_id = "+ press+ "";
-
-            MySqlCommand cmd = new MySqlCommand(query, conn);
-
-            conn.Open();
-            MySqlDataReader rdr = cmd.ExecuteReader();
-
-            int i = 0;
-
-            while (rdr.Read())
+            if (press < 4 && press > 0)
             {
-                makanan[i] = rdr["texts"].ToString();
-                hitung++;
-                i++;
+                string query = $"SELECT me_name as texts FROM menu where me_ty_id = " + press + "";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                conn.Open();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                int i = 0;
+
+                while (rdr.Read())
+                {
+                    makanan[i] = rdr["texts"].ToString();
+                    hitung++;
+                    i++;
+                }
+                conn.Close();
             }
-            conn.Close();
+            else if ( press == 4)
+            {
+                string query = $"SELECT bu_name as texts FROM bundle WHERE bu_id > 0;";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                conn.Open();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                int i = 0;
+
+                while (rdr.Read())
+                {
+                    makanan[i] = rdr["texts"].ToString();
+                    hitung++;
+                    i++;
+                }
+                conn.Close();
+               
+            }
         }
 
         private void generateButton()
@@ -163,6 +186,7 @@ namespace User
                 inx = 200;
                 iny = iny + 150;
             }
+            hitung = 0;
             
         }
         public void Clicks(object sender, EventArgs e)
@@ -206,6 +230,24 @@ namespace User
             Bitmap bitmap = new Bitmap(textBox1);
             pbgambar.Image = bitmap;
 
+            if (press > 0 && press < 4)
+            {
+                string query = $"SELECT me_description as texts FROM menu WHERE me_name = '" + button.Text + "';";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                conn.Open();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                int i = 0;
+
+                while (rdr.Read())
+                {
+                    lbdescription.Text = rdr["texts"].ToString();
+                    i++;
+                }
+                conn.Close();
+            }
 
         }
         private void bmakanan_Click(object sender, EventArgs e)
