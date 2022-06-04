@@ -95,5 +95,35 @@ namespace Project_Staff
             admin.ShowDialog();
             Show();
         }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            loadDataGrid();
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            if (dateFinish.Value >= dateStart.Value)
+            {
+                string startDate = dateStart.Value.ToString("yyyy-MM-dd");
+                string finishDate = dateFinish.Value.ToString("yyyy-MM-dd");
+
+                string query = $"select ht_id as 'ID', ht_invoice as 'Invoice', ht_total as 'Total', ht_date as 'Date' from htrans where ht_status = 1 and ht_date between '{startDate}' and '{finishDate}' order by 1";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                conn.Open();
+                cmd.ExecuteReader();
+                conn.Close();
+
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                dsTransaction = new DataSet();
+                da.Fill(dsTransaction);
+                dgvTransaction.DataSource = dsTransaction.Tables[0].DefaultView;
+            }
+            else
+            {
+                MessageBox.Show("Tanggal ke-2 harus lebih kecil!");
+            }
+        }
     }
 }
