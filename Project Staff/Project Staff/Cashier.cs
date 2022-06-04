@@ -96,6 +96,7 @@ namespace Project_Staff
             Hide();
             f.ShowDialog();
             Show();
+            loadDGVPay();
         }
 
         private void dgvReady_MouseDoubleClick(object sender, MouseEventArgs e)

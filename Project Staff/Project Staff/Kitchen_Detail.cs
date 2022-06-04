@@ -82,7 +82,7 @@ namespace Project_Staff
                 conn.Close();
             }
 
-            MessageBox.Show("Transaction Has Been Paid!!!");
+            MessageBox.Show("Order has been cooked!!!");
             Hide();
         }
 

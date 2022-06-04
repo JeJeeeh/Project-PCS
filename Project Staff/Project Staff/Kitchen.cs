@@ -52,7 +52,7 @@ namespace Project_Staff
 
         public void loadDGVKitchen()
         {
-            string q = "SELECT ht_invoice AS 'Invoice Number', ht_total AS 'Total' FROM htrans WHERE ht_status = 2;";
+            string q = "SELECT ht_invoice AS 'Invoice Number', ht_total AS 'Total' FROM htrans WHERE ht_status = 3;";
             MySqlCommand cmd = new MySqlCommand(q, conn);
 
             conn.Open();
@@ -78,6 +78,7 @@ namespace Project_Staff
             Hide();
             f.ShowDialog();
             Show();
+            loadDGVKitchen();
         }
     }
 }

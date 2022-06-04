@@ -64,7 +64,7 @@ namespace Project_Staff
             this.btnDone.Name = "btnDone";
             this.btnDone.Size = new System.Drawing.Size(110, 57);
             this.btnDone.TabIndex = 72;
-            this.btnDone.Text = "Done";
+            this.btnDone.Text = "Take Order";
             this.btnDone.UseVisualStyleBackColor = false;
             this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
             // 
