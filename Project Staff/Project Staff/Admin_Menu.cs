@@ -37,6 +37,7 @@ namespace Project_Staff
                 conn.Close();
 
                 loadDataGrid();
+                loadComboBox();
             }
             catch (Exception ex)
             {
@@ -57,6 +58,24 @@ namespace Project_Staff
             dsMenu = new DataSet();
             da.Fill(dsMenu);
             dgvStaff.DataSource = dsMenu.Tables[0].DefaultView;
+        }
+
+        public void loadComboBox()
+        {
+            string query = "select ty_id as 'ID', ty_name as 'Name' from type";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+
+            conn.Open();
+            cmd.ExecuteReader();
+            conn.Close();
+
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            dtMenu = new DataTable();
+            da.Fill(dtMenu);
+            cbFilter.ValueMember = "ID";
+            cbFilter.DisplayMember = "Name";
+            cbFilter.DataSource = dtMenu.DefaultView;
+            cbFilter.SelectedIndex = 0;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
