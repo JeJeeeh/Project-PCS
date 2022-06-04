@@ -25,6 +25,14 @@ namespace Project_Staff
             lWelcome.Text = "Welcome " + username;
 
             connectDB();
+
+            dgvCashPay.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvCashPay.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            dgvReady.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvReady.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            
         }
 
         public void connectDB()
@@ -50,7 +58,7 @@ namespace Project_Staff
 
         public void loadDGVPay()
         {
-            string q = "SELECT ht_invoice AS 'Invoice Number', ht_total AS 'Total' FROM htrans WHERE ht_status = 0;";
+            string q = "SELECT ht_invoice AS 'Invoice Number', ht_total AS 'Total' FROM htrans WHERE ht_status = 3;";
             MySqlCommand cmd = new MySqlCommand(q, conn);
 
             conn.Open();
@@ -78,6 +86,16 @@ namespace Project_Staff
             dtReady = new DataTable();
             da.Fill(dtReady);
             dgvReady.DataSource = dtReady;
+        }
+
+        private void dgvCashPay_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+ 
+            string invoiceNum = dgvCashPay.CurrentRow.Cells[0].Value.ToString();
+
+            //MessageBox.Show(invoiceNum);
+
+            Cashier_CashPayment f = new Cashier_CashPayment(invoiceNum);
         }
     }
 }

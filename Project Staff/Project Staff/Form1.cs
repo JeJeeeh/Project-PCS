@@ -74,7 +74,7 @@ namespace Project_Staff
                 }
                 else if (privilege == 2)
                 {
-                    Kitchen kitchen = new Kitchen();
+                    Kitchen kitchen = new Kitchen(username);
                     Hide();
                     kitchen.ShowDialog();
                     Show();

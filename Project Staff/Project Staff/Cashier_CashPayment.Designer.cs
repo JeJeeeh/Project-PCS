@@ -31,12 +31,12 @@ namespace Project_Staff
         {
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lTNum = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvCashier = new System.Windows.Forms.DataGridView();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnPay = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCashier)).BeginInit();
             this.SuspendLayout();
             // 
             // label5
@@ -59,15 +59,15 @@ namespace Project_Staff
             this.label4.TabIndex = 13;
             this.label4.Text = "PPN : 10%";
             // 
-            // label2
+            // lTNum
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 27);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(313, 25);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "Transaction Number : blablabla";
+            this.lTNum.AutoSize = true;
+            this.lTNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lTNum.Location = new System.Drawing.Point(12, 27);
+            this.lTNum.Name = "lTNum";
+            this.lTNum.Size = new System.Drawing.Size(313, 25);
+            this.lTNum.TabIndex = 12;
+            this.lTNum.Text = "Transaction Number : blablabla";
             // 
             // label1
             // 
@@ -79,15 +79,15 @@ namespace Project_Staff
             this.label1.TabIndex = 11;
             this.label1.Text = "Total : Rp. 100.000";
             // 
-            // dataGridView1
+            // dgvCashier
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(14, 75);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(775, 286);
-            this.dataGridView1.TabIndex = 10;
+            this.dgvCashier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCashier.Location = new System.Drawing.Point(14, 75);
+            this.dgvCashier.Name = "dgvCashier";
+            this.dgvCashier.RowHeadersWidth = 51;
+            this.dgvCashier.RowTemplate.Height = 24;
+            this.dgvCashier.Size = new System.Drawing.Size(775, 286);
+            this.dgvCashier.TabIndex = 10;
             // 
             // btnBack
             // 
@@ -125,12 +125,12 @@ namespace Project_Staff
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lTNum);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvCashier);
             this.Name = "Cashier_CashPayment";
             this.Text = "Cashier_CashPayment";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCashier)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,9 +139,9 @@ namespace Project_Staff
         #endregion
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lTNum;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvCashier;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnPay;
     }

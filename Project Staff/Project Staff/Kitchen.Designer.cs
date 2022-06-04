@@ -29,21 +29,27 @@ namespace Project_Staff
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvKitchen = new System.Windows.Forms.DataGridView();
             this.btnLogout = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.lWelcome = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKitchen)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvKitchen
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(15, 69);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(776, 383);
-            this.dataGridView1.TabIndex = 8;
+            this.dgvKitchen.AllowUserToAddRows = false;
+            this.dgvKitchen.AllowUserToDeleteRows = false;
+            this.dgvKitchen.AllowUserToResizeColumns = false;
+            this.dgvKitchen.AllowUserToResizeRows = false;
+            this.dgvKitchen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvKitchen.Location = new System.Drawing.Point(15, 69);
+            this.dgvKitchen.Name = "dgvKitchen";
+            this.dgvKitchen.RowHeadersVisible = false;
+            this.dgvKitchen.RowHeadersWidth = 51;
+            this.dgvKitchen.RowTemplate.Height = 24;
+            this.dgvKitchen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvKitchen.Size = new System.Drawing.Size(776, 383);
+            this.dgvKitchen.TabIndex = 8;
             // 
             // btnLogout
             // 
@@ -58,35 +64,35 @@ namespace Project_Staff
             this.btnLogout.Text = "Log Out";
             this.btnLogout.UseVisualStyleBackColor = false;
             // 
-            // label2
+            // lWelcome
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 21);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(181, 25);
-            this.label2.TabIndex = 72;
-            this.label2.Text = "Welcome Kitchen";
+            this.lWelcome.AutoSize = true;
+            this.lWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lWelcome.Location = new System.Drawing.Point(12, 21);
+            this.lWelcome.Name = "lWelcome";
+            this.lWelcome.Size = new System.Drawing.Size(181, 25);
+            this.lWelcome.TabIndex = 72;
+            this.lWelcome.Text = "Welcome Kitchen";
             // 
             // Kitchen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 458);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lWelcome);
             this.Controls.Add(this.btnLogout);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvKitchen);
             this.Name = "Kitchen";
             this.Text = "Kitchen";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKitchen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvKitchen;
         private System.Windows.Forms.Button btnLogout;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lWelcome;
     }
 }

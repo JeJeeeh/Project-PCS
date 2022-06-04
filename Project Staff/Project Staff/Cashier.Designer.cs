@@ -67,6 +67,7 @@ namespace Project_Staff
             this.dgvCashPay.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCashPay.Size = new System.Drawing.Size(743, 267);
             this.dgvCashPay.TabIndex = 1;
+            this.dgvCashPay.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvCashPay_MouseDoubleClick);
             // 
             // dgvReady
             // 
