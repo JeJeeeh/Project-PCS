@@ -7,18 +7,30 @@ using System.IO;
 using System.Net;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Collections;
 
 namespace User
 {
     public partial class Form1 : Form
     {
+        ArrayList listmakanan = new ArrayList();
+        ArrayList listmakanan2 = new ArrayList();
+        ArrayList listdtrans = new ArrayList();
         MySqlConnection conn;
         List<Button> buttons = new List<Button>();
+        List<Button> buttons2 = new List<Button>();
+        List<Label> labels = new List<Label>();
+        int totaluang = 0;
+        int htid = 0;
+        int dtid = 0;
         int press = 0;
         int counter = 0;
         int hitung = 0;
+        int reset = 0;
         string [] makanan = new string[100];
-        string [] tipem = new string[100];
+        string textmakanan = " ";
+        int pertamakali = 0;
+        int sama = 0;
         public Form1()
         {
             InitializeComponent();
@@ -112,6 +124,7 @@ namespace User
 
         private void generateButton()
         {
+            reset = 0;
             hitung = 0;
             foreach (Button btn in buttons)
             {
@@ -193,6 +206,7 @@ namespace User
         {
             
             Button button = sender as Button;
+            textmakanan = button.Text;
             foreach (Button btn in buttons)
             {
                 this.Controls.Remove(btn);
@@ -229,7 +243,7 @@ namespace User
             }
             Bitmap bitmap = new Bitmap(textBox1);
             pbgambar.Image = bitmap;
-
+            lbdescription.Text = "";
             if (press > 0 && press < 4)
             {
                 string query = $"SELECT me_description as texts FROM menu WHERE me_name = '" + button.Text + "';";
@@ -247,8 +261,66 @@ namespace User
                     i++;
                 }
                 conn.Close();
-            }
 
+                string querys = $"SELECT  me_price as texts FROM menu WHERE me_name = '" + button.Text + "';";
+
+                MySqlCommand cmds = new MySqlCommand(querys, conn);
+
+                conn.Open();
+                MySqlDataReader rdrs = cmds.ExecuteReader();
+
+
+
+                while (rdrs.Read())
+                {
+                    lbtotal.Text ="Total : "+ rdrs["texts"].ToString();
+                    reset = Int32.Parse(rdrs["texts"].ToString());
+                }
+                conn.Close();
+
+            }
+            if (press == 4)
+            {
+                lbdescription.Text = "Paket ini berisi ";
+                string query = $"SELECT me_name as texts FROM menu ,(SELECT mb_me_id AS idbud FROM bundle,menu_bundle WHERE bu_name = '" + button.Text + "' ORDER BY mb_me_id ASC) mn WHERE me_id = mn.idbud;";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                conn.Open();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                int i = 0;
+
+                while (rdr.Read())
+                {
+                    if (i == 0)
+                    {
+                        lbdescription.Text = lbdescription.Text + rdr["texts"].ToString();
+                    }
+                    else
+                    {
+                        lbdescription.Text = lbdescription.Text + ", " + rdr["texts"].ToString();
+                    }
+                    i++;
+                }
+                conn.Close();
+
+                string querys = $"SELECT  bu_price as texts FROM bundle WHERE bu_name =  '" + button.Text + "';";
+
+                MySqlCommand cmds = new MySqlCommand(querys, conn);
+
+                conn.Open();
+                MySqlDataReader rdrs = cmds.ExecuteReader();
+
+
+
+                while (rdrs.Read())
+                {
+                    lbtotal.Text = "Total : " + rdrs["texts"].ToString();
+                    reset = Int32.Parse(rdrs["texts"].ToString());
+                }
+                conn.Close();
+            }
         }
         private void bmakanan_Click(object sender, EventArgs e)
         {
@@ -296,6 +368,20 @@ namespace User
 
         private void bbuy_Click(object sender, EventArgs e)
         {
+            lbtot.Text = "Total : Rp. ";
+            foreach (Label lb in labels)
+            {
+                this.Controls.Remove(lb);
+                lb.Dispose();
+            }
+            foreach (Button bb in buttons2)
+            {
+                this.Controls.Remove(bb);
+                bb.Dispose();
+            }
+            int ly = 20;
+            int lx = 40;
+
             pbgambar.Visible = false;
             lbdescription.Visible = false;
             lbtotal.Visible = false;
@@ -307,13 +393,134 @@ namespace User
             bya.Visible = true;
             btidak.Visible = true;
             lbnambah.Visible = true;
-            lblist1.Visible = true;
-            lblist2.Visible = true;
             lbtot.Visible = true;
             pbcart.Visible = true;
             pbtanya.Visible = true;
+
+
+
+
+            if (pertamakali == 0)
+            {
+                listmakanan2.Add(textmakanan);
+                listmakanan.Add(textmakanan + " x" + nuobjek.Value + " : " + (Convert.ToInt32(nuobjek.Value) * reset));
+                pertamakali = 1;
+            }
+            for (int x = 0; x < this.listmakanan.Count; x++)
+            {
+                if (listmakanan[x].ToString().Contains(textmakanan) == true)
+                {
+                    sama = 1;
+                    this.listmakanan[x] = textmakanan + " x" + nuobjek.Value + " : " + (Convert.ToInt32(nuobjek.Value) * reset);
+                }
+            }
+            if (sama == 0)
+            {
+                listmakanan2.Add(textmakanan);
+                listmakanan.Add(textmakanan + " x" + nuobjek.Value +" : "+ (Convert.ToInt32(nuobjek.Value) * reset));
+            }
+            else
+            {
+                sama = 0;
+            }
+            int hitungs = 0;
+            int countss =0;
+            foreach (var item in listmakanan)
+            {
+                string[] parts = item.ToString().Split(' ');
+                string lastWord = parts[parts.Length - 1];
+
+
+                int index = lastWord.IndexOfAny(new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' });
+                string chars = lastWord.Substring(0, index);
+                int num = Int32.Parse(lastWord.Substring(index));
+
+                hitungs = hitungs + num;
+
+                Label newlabel = new Label();
+                labels.Add(newlabel);
+                pbcart.Controls.Add(newlabel);
+                newlabel.Text = item.ToString();
+                newlabel.Location = new Point(lx, ly);
+                newlabel.Size = new Size(300, 20);
+
+                Button newButtons = new Button();
+                buttons2.Add(newButtons);
+                pbcart.Controls.Add(newButtons);
+                newButtons.Text = "Delete";
+                newButtons.Tag = countss;
+                newButtons.Location = new Point(lx+300, ly-5);
+                newButtons.Size = new Size(100, 25);
+                newButtons.Click += new EventHandler(Clicks2);
+
+                countss++;
+                ly = ly + 40;
+
+            }
+            totaluang = hitungs;
+            lbtot.Text = lbtot.Text + hitungs;
+            nuobjek.Value = 1;
         }
 
+        public void Clicks2(object sender, EventArgs e)
+        {
+            lbtot.Text = "Total : Rp. ";
+            int ly = 20;
+            int lx = 40;
+            Button button = sender as Button;
+            foreach (Button btn in buttons)
+            {
+                this.Controls.Remove(btn);
+                btn.Dispose();
+            }
+            listmakanan2.RemoveAt(Int32.Parse(button.Tag.ToString()));
+            listmakanan.RemoveAt(Int32.Parse(button.Tag.ToString()));
+            foreach (Label lb in labels)
+            {
+                this.Controls.Remove(lb);
+                lb.Dispose();
+            }
+            foreach (Button bb in buttons2)
+            {
+                this.Controls.Remove(bb);
+                bb.Dispose();
+            }
+            int hitungs = 0;
+            int countss = 0;
+            foreach (var item in listmakanan)
+            {
+                string[] parts = item.ToString().Split(' ');
+                string lastWord = parts[parts.Length - 1];
+
+
+                int index = lastWord.IndexOfAny(new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' });
+                string chars = lastWord.Substring(0, index);
+                int num = Int32.Parse(lastWord.Substring(index));
+
+                hitungs = hitungs + num;
+
+                Label newlabel = new Label();
+                labels.Add(newlabel);
+                pbcart.Controls.Add(newlabel);
+                newlabel.Text = item.ToString();
+                newlabel.Location = new Point(lx, ly);
+                newlabel.Size = new Size(300, 20);
+
+                Button newButtons = new Button();
+                buttons2.Add(newButtons);
+                pbcart.Controls.Add(newButtons);
+                newButtons.Text = "Delete";
+                newButtons.Tag = countss;
+                newButtons.Location = new Point(lx + 300, ly - 5);
+                newButtons.Size = new Size(100, 25);
+                newButtons.Click += new EventHandler(Clicks2);
+
+                countss++;
+                ly = ly + 40;
+
+            }
+            lbtot.Text = lbtot.Text + hitungs;
+        }
         private void bntunai_Click(object sender, EventArgs e)
         {
             pbgambar.Visible = false;
@@ -333,8 +540,226 @@ namespace User
             pbkartu.Visible = true;
             pbverify.Visible = true;
             timer1.Start();
+            pertamakali = 0;
+            if (pertamakali == 0)
+            {
+                string query = $"SELECT COUNT(ht_id)+1 as texts FROM htrans;";
 
-        }
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                conn.Open();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    htid = Int32.Parse(rdr["texts"].ToString());
+                }
+                conn.Close();
+
+
+                string querys = $"SELECT COUNT(dt_id)+1 as texts FROM dtrans;";
+
+                MySqlCommand cmds = new MySqlCommand(querys, conn);
+
+                conn.Open();
+                MySqlDataReader rdrs = cmds.ExecuteReader();
+
+                while (rdrs.Read())
+                {
+                    dtid = Int32.Parse(rdrs["texts"].ToString());
+                }
+                conn.Close();
+
+                string htrans = "";
+
+                string querys1 = $"SELECT CONCAT(LPAD(DAY(CURDATE()), 2, '0'), LPAD(MONTH(CURDATE()),2 , '0'), YEAR(CURDATE())) AS texts FROM DUAL";
+
+                MySqlCommand cmds1 = new MySqlCommand(querys1, conn);
+
+                conn.Open();
+                MySqlDataReader rdrs1 = cmds1.ExecuteReader();
+
+                while (rdrs1.Read())
+                {
+                    htrans = rdrs1["texts"].ToString();
+                }
+                conn.Close();
+
+                string htrans2 = "";
+                string querys2 = $"SELECT (COUNT(*) + 1) as texts FROM htrans WHERE ht_invoice LIKE CONCAT('%','"+htrans+"','%') ";
+
+                MySqlCommand cmds2 = new MySqlCommand(querys2, conn);
+
+                conn.Open();
+                MySqlDataReader rdrs2 = cmds2.ExecuteReader();
+
+                while (rdrs2.Read())
+                {
+                    htrans2 = rdrs2["texts"].ToString();
+                }
+                conn.Close();
+                if (Int32.Parse(htrans2) < 10)
+                {
+                    htrans = htrans + "0" + htrans2;
+                }
+                else if (Int32.Parse(htrans2) > 10)
+                {
+                    htrans = htrans +  htrans2;
+                }
+
+                string date = "";
+                string querys3 = $"SELECT CURDATE() AS texts FROM DUAL";
+
+                MySqlCommand cmds3 = new MySqlCommand(querys3, conn);
+
+                conn.Open();
+                MySqlDataReader rdrs3 = cmds3.ExecuteReader();
+
+                while (rdrs3.Read())
+                {
+                    date = rdrs3["texts"].ToString();
+                }
+                conn.Close();
+
+                try
+                {
+
+                    string Query = "INSERT INTO htrans VALUES ('"+htid+"','"+htrans+"','"+totaluang+"',CURDATE(),3);";
+                    MySqlCommand MyCommand2 = new MySqlCommand(Query, conn);
+                    conn.Open();
+                    MySqlDataReader MyReader2 = MyCommand2.ExecuteReader();    
+                    while (MyReader2.Read())
+                    {
+                    }
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            }
+            foreach (var item in listmakanan)
+            {
+
+                string[] parts = item.ToString().Split(' ');
+                string lastWord = parts[parts.Length - 3];
+
+
+                int index = lastWord.IndexOfAny(new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' });
+                string chars = lastWord.Substring(0, index);
+                int num = Int32.Parse(lastWord.Substring(index));
+
+                foreach (var items in listmakanan2)
+                {
+                    int check = 0;
+                    int idmebud = 0;
+                    string querys = $"SELECT count(bu_id) as texts FROM bundle WHERE bu_name = '" + items.ToString() + "';";
+
+                    MySqlCommand cmds = new MySqlCommand(querys, conn);
+
+                    conn.Open();
+                    MySqlDataReader rdrs = cmds.ExecuteReader();
+
+                    while (rdrs.Read())
+                    {
+                        check = Int32.Parse(rdrs["texts"].ToString());
+                    }
+                    conn.Close();
+
+                    string querys3 = $"SELECT bu_id as texts FROM bundle WHERE bu_name = '" + items.ToString() + "';";
+
+                    MySqlCommand cmds3 = new MySqlCommand(querys3, conn);
+
+                    conn.Open();
+                    MySqlDataReader rdrs3 = cmds3.ExecuteReader();
+
+                    while (rdrs3.Read())
+                    {
+                        idmebud = Int32.Parse(rdrs3["texts"].ToString());
+                    }
+                    conn.Close();
+
+                    if (item.ToString().Contains(items.ToString()) == true)
+                    {
+                        if (check > 0)
+                        {
+                            string query = $"SELECT mb_me_id as texts FROM menu_bundle WHERE mb_bu_id = "+ idmebud + ";";
+
+                            MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                            conn.Open();
+                            MySqlDataReader rdr = cmd.ExecuteReader();
+
+                            while (rdr.Read())
+                            {
+                                listdtrans.Add(rdr["texts"].ToString());
+                            }
+                            conn.Close();
+
+                            foreach (var dt in listdtrans)
+                            {
+                                try
+                                {
+
+                                    string Query = "INSERT INTO dtrans VALUES ('" + dtid + "','" + htid + "','" + dt.ToString()+ "','" + num + "',1);";
+                                    MySqlCommand MyCommand2 = new MySqlCommand(Query, conn);
+                                    conn.Open();
+                                    MySqlDataReader MyReader2 = MyCommand2.ExecuteReader();
+                                    while (MyReader2.Read())
+                                    {
+                                    }
+                                    conn.Close();
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show(ex.Message);
+                                }
+                                dtid = dtid + 1;
+                            }
+                            listdtrans.Clear();
+                        }
+                        else
+                        {
+                            string ids = "";
+                            string query = $"SELECT me_id as texts FROM menu WHERE me_name = '" + items.ToString() + "';";
+
+                            MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                            conn.Open();
+                            MySqlDataReader rdr = cmd.ExecuteReader();
+
+                            while (rdr.Read())
+                            {
+                                ids = rdr["texts"].ToString();
+                            }
+                            conn.Close();
+
+
+                            try
+                            {
+
+                                string Query = "INSERT INTO dtrans VALUES ('" + dtid + "','" + htid + "','" + ids + "','" + num + "',1);";
+                                MySqlCommand MyCommand2 = new MySqlCommand(Query, conn);
+                                conn.Open();
+                                MySqlDataReader MyReader2 = MyCommand2.ExecuteReader();
+                                while (MyReader2.Read())
+                                {
+                                }
+                                conn.Close();
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+                            dtid = dtid + 1;
+                        }
+                    }
+                }
+
+            }
+
+          }
 
         private void btunai_Click(object sender, EventArgs e)
         {
@@ -354,6 +779,224 @@ namespace User
 
             lproses.Visible = true;
             bkembali.Visible = true;
+            pertamakali = 0;
+            if (pertamakali == 0)
+            {
+                string query = $"SELECT COUNT(ht_id)+1 as texts FROM htrans;";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                conn.Open();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    htid = Int32.Parse(rdr["texts"].ToString());
+                }
+                conn.Close();
+
+
+                string querys = $"SELECT COUNT(dt_id)+1 as texts FROM dtrans;";
+
+                MySqlCommand cmds = new MySqlCommand(querys, conn);
+
+                conn.Open();
+                MySqlDataReader rdrs = cmds.ExecuteReader();
+
+                while (rdrs.Read())
+                {
+                    dtid = Int32.Parse(rdrs["texts"].ToString());
+                }
+                conn.Close();
+
+                string htrans = "";
+
+                string querys1 = $"SELECT CONCAT(LPAD(DAY(CURDATE()), 2, '0'), LPAD(MONTH(CURDATE()),2 , '0'), YEAR(CURDATE())) AS texts FROM DUAL";
+
+                MySqlCommand cmds1 = new MySqlCommand(querys1, conn);
+
+                conn.Open();
+                MySqlDataReader rdrs1 = cmds1.ExecuteReader();
+
+                while (rdrs1.Read())
+                {
+                    htrans = rdrs1["texts"].ToString();
+                }
+                conn.Close();
+
+                string htrans2 = "";
+                string querys2 = $"SELECT (COUNT(*) + 1) as texts FROM htrans WHERE ht_invoice LIKE CONCAT('%','" + htrans + "','%') ";
+
+                MySqlCommand cmds2 = new MySqlCommand(querys2, conn);
+
+                conn.Open();
+                MySqlDataReader rdrs2 = cmds2.ExecuteReader();
+
+                while (rdrs2.Read())
+                {
+                    htrans2 = rdrs2["texts"].ToString();
+                }
+                conn.Close();
+                if (Int32.Parse(htrans2) < 10)
+                {
+                    htrans = htrans + "0" + htrans2;
+                }
+                else if (Int32.Parse(htrans2) > 10)
+                {
+                    htrans = htrans + htrans2;
+                }
+
+                string date = "";
+                string querys3 = $"SELECT CURDATE() AS texts FROM DUAL";
+
+                MySqlCommand cmds3 = new MySqlCommand(querys3, conn);
+
+                conn.Open();
+                MySqlDataReader rdrs3 = cmds3.ExecuteReader();
+
+                while (rdrs3.Read())
+                {
+                    date = rdrs3["texts"].ToString();
+                }
+                conn.Close();
+
+                try
+                {
+
+                    string Query = "INSERT INTO htrans VALUES ('" + htid + "','" + htrans + "','" + totaluang + "',CURDATE(),2);";
+                    MySqlCommand MyCommand2 = new MySqlCommand(Query, conn);
+                    conn.Open();
+                    MySqlDataReader MyReader2 = MyCommand2.ExecuteReader();
+                    while (MyReader2.Read())
+                    {
+                    }
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            }
+            foreach (var item in listmakanan)
+            {
+
+                string[] parts = item.ToString().Split(' ');
+                string lastWord = parts[parts.Length - 3];
+
+
+                int index = lastWord.IndexOfAny(new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' });
+                string chars = lastWord.Substring(0, index);
+                int num = Int32.Parse(lastWord.Substring(index));
+
+                foreach (var items in listmakanan2)
+                {
+                    int check = 0;
+                    int idmebud = 0;
+                    string querys = $"SELECT count(bu_id) as texts FROM bundle WHERE bu_name = '" + items.ToString() + "';";
+
+                    MySqlCommand cmds = new MySqlCommand(querys, conn);
+
+                    conn.Open();
+                    MySqlDataReader rdrs = cmds.ExecuteReader();
+
+                    while (rdrs.Read())
+                    {
+                        check = Int32.Parse(rdrs["texts"].ToString());
+                    }
+                    conn.Close();
+
+                    string querys3 = $"SELECT bu_id as texts FROM bundle WHERE bu_name = '" + items.ToString() + "';";
+
+                    MySqlCommand cmds3 = new MySqlCommand(querys3, conn);
+
+                    conn.Open();
+                    MySqlDataReader rdrs3 = cmds3.ExecuteReader();
+
+                    while (rdrs3.Read())
+                    {
+                        idmebud = Int32.Parse(rdrs3["texts"].ToString());
+                    }
+                    conn.Close();
+
+                    if (item.ToString().Contains(items.ToString()) == true)
+                    {
+                        if (check > 0)
+                        {
+                            string query = $"SELECT mb_me_id as texts FROM menu_bundle WHERE mb_bu_id = " + idmebud + ";";
+
+                            MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                            conn.Open();
+                            MySqlDataReader rdr = cmd.ExecuteReader();
+
+                            while (rdr.Read())
+                            {
+                                listdtrans.Add(rdr["texts"].ToString());
+                            }
+                            conn.Close();
+
+                            foreach (var dt in listdtrans)
+                            {
+                                try
+                                {
+
+                                    string Query = "INSERT INTO dtrans VALUES ('" + dtid + "','" + htid + "','" + dt.ToString() + "','" + num + "',1);";
+                                    MySqlCommand MyCommand2 = new MySqlCommand(Query, conn);
+                                    conn.Open();
+                                    MySqlDataReader MyReader2 = MyCommand2.ExecuteReader();
+                                    while (MyReader2.Read())
+                                    {
+                                    }
+                                    conn.Close();
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show(ex.Message);
+                                }
+                                dtid = dtid + 1;
+                            }
+                            listdtrans.Clear();
+                        }
+                        else
+                        {
+                            string ids = "";
+                            string query = $"SELECT me_id as texts FROM menu WHERE me_name = '" + items.ToString() + "';";
+
+                            MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                            conn.Open();
+                            MySqlDataReader rdr = cmd.ExecuteReader();
+
+                            while (rdr.Read())
+                            {
+                                ids = rdr["texts"].ToString();
+                            }
+                            conn.Close();
+
+
+                            try
+                            {
+
+                                string Query = "INSERT INTO dtrans VALUES ('" + dtid + "','" + htid + "','" + ids + "','" + num + "',1);";
+                                MySqlCommand MyCommand2 = new MySqlCommand(Query, conn);
+                                conn.Open();
+                                MySqlDataReader MyReader2 = MyCommand2.ExecuteReader();
+                                while (MyReader2.Read())
+                                {
+                                }
+                                conn.Close();
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+                            dtid = dtid + 1;
+                        }
+                    }
+                }
+
+            }
         }
 
         private void bya_Click(object sender, EventArgs e)
@@ -369,8 +1012,6 @@ namespace User
             lbnambah.Visible = false;
             pbtanya.Visible = false;
 
-            lblist1.Visible = false;
-            lblist2.Visible = false;
             lbtot.Visible = false;
             pbcart.Visible = false;
 
@@ -394,16 +1035,14 @@ namespace User
             lbnambah.Visible = false;
             pbtanya.Visible = false;
 
-            lblist1.Visible = false;
-            lblist2.Visible = false;
             lbtot.Visible = false;
             pbcart.Visible = false;
 
             bntunai.Visible = true;
             btunai.Visible = true;
             lbpilihpembayaran.Visible = true;
-        }
 
+        }
         private void lproses_Click(object sender, EventArgs e)
         {
 
@@ -436,6 +1075,31 @@ namespace User
             bmakanan.BackColor = Color.White;
             bminuman.BackColor = Color.White;
             bpaket.BackColor = Color.White;
+            foreach (Label lb in labels)
+            {
+                this.Controls.Remove(lb);
+                lb.Dispose();
+            }
+            foreach (Button bb in buttons2)
+            {
+                this.Controls.Remove(bb);
+                bb.Dispose();
+            }
+            htid = 0;
+            dtid = 0;
+            press = 0;
+            counter = 0;
+            hitung = 0;
+            reset = 0;
+            textmakanan = " ";
+            pertamakali = 0;
+            sama = 0;
+            totaluang = 0;
+            listmakanan.Clear();
+            listmakanan2.Clear();
+            labels.Clear();
+            buttons.Clear();
+            buttons2.Clear();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -475,8 +1139,6 @@ namespace User
             lbnambah.Visible = false;
             pbtanya.Visible = false;
 
-            lblist1.Visible = false;
-            lblist2.Visible = false;
             lbtot.Visible = false;
             pbcart.Visible = false;
             btnback.Visible = false;
@@ -486,6 +1148,7 @@ namespace User
             bminuman.Visible = true;
             bpaket.Visible = true;
             pictureBox1.Visible = true;
+            nuobjek.Value = 1;
         }
 
         private void tbpin_TextChanged(object sender, EventArgs e)
@@ -532,6 +1195,13 @@ namespace User
                 lbprosses2.Visible = true;
                 bkembali.Visible = true;
             }
+
+        }
+
+        private void nuobjek_ValueChanged(object sender, EventArgs e)
+        {
+            int total = Convert.ToInt32(nuobjek.Value) * reset;
+            lbtotal.Text ="Total : " + total.ToString();
 
         }
     }

@@ -53,8 +53,6 @@ namespace User
             this.btidak = new System.Windows.Forms.Button();
             this.lproses = new System.Windows.Forms.Label();
             this.bkembali = new System.Windows.Forms.Button();
-            this.lblist1 = new System.Windows.Forms.Label();
-            this.lblist2 = new System.Windows.Forms.Label();
             this.lbtot = new System.Windows.Forms.Label();
             this.pbcart = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -192,6 +190,7 @@ namespace User
             0,
             0});
             this.nuobjek.Visible = false;
+            this.nuobjek.ValueChanged += new System.EventHandler(this.nuobjek_ValueChanged);
             // 
             // lbdescription
             // 
@@ -333,30 +332,6 @@ namespace User
             this.bkembali.Visible = false;
             this.bkembali.Click += new System.EventHandler(this.bkembali_Click);
             // 
-            // lblist1
-            // 
-            this.lblist1.AutoSize = true;
-            this.lblist1.BackColor = System.Drawing.Color.White;
-            this.lblist1.Font = new System.Drawing.Font("Times New Roman", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblist1.Location = new System.Drawing.Point(11, 21);
-            this.lblist1.Name = "lblist1";
-            this.lblist1.Size = new System.Drawing.Size(253, 40);
-            this.lblist1.TabIndex = 23;
-            this.lblist1.Text = "French fries  x1";
-            this.lblist1.Visible = false;
-            // 
-            // lblist2
-            // 
-            this.lblist2.AutoSize = true;
-            this.lblist2.BackColor = System.Drawing.Color.White;
-            this.lblist2.Font = new System.Drawing.Font("Times New Roman", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblist2.Location = new System.Drawing.Point(11, 73);
-            this.lblist2.Name = "lblist2";
-            this.lblist2.Size = new System.Drawing.Size(255, 40);
-            this.lblist2.TabIndex = 24;
-            this.lblist2.Text = "Hamburger   x2";
-            this.lblist2.Visible = false;
-            // 
             // lbtot
             // 
             this.lbtot.AutoSize = true;
@@ -364,9 +339,9 @@ namespace User
             this.lbtot.Font = new System.Drawing.Font("Times New Roman", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbtot.Location = new System.Drawing.Point(13, 526);
             this.lbtot.Name = "lbtot";
-            this.lbtot.Size = new System.Drawing.Size(204, 40);
+            this.lbtot.Size = new System.Drawing.Size(186, 40);
             this.lbtot.TabIndex = 25;
-            this.lbtot.Text = "Total : Rp. 0";
+            this.lbtot.Text = "Total : Rp. ";
             this.lbtot.Visible = false;
             // 
             // pbcart
@@ -464,7 +439,7 @@ namespace User
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.White;
-            this.pictureBox2.Location = new System.Drawing.Point(-2, -5);
+            this.pictureBox2.Location = new System.Drawing.Point(-3, -2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(1037, 755);
             this.pictureBox2.TabIndex = 35;
@@ -486,8 +461,6 @@ namespace User
             this.Controls.Add(this.pbverify);
             this.Controls.Add(this.btnback);
             this.Controls.Add(this.lbtot);
-            this.Controls.Add(this.lblist2);
-            this.Controls.Add(this.lblist1);
             this.Controls.Add(this.pbcart);
             this.Controls.Add(this.bkembali);
             this.Controls.Add(this.lproses);
@@ -557,8 +530,6 @@ namespace User
         private System.Windows.Forms.Button btidak;
         private System.Windows.Forms.Label lproses;
         private System.Windows.Forms.Button bkembali;
-        private System.Windows.Forms.Label lblist1;
-        private System.Windows.Forms.Label lblist2;
         private System.Windows.Forms.Label lbtot;
         private System.Windows.Forms.PictureBox pbcart;
         private System.Windows.Forms.Timer timer1;
