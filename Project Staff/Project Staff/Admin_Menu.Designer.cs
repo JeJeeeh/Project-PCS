@@ -72,14 +72,12 @@ namespace Project_Staff
             this.btnFilter.TabIndex = 53;
             this.btnFilter.Text = "Filter";
             this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // cbFilter
             // 
             this.cbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFilter.FormattingEnabled = true;
-            this.cbFilter.Items.AddRange(new object[] {
-            "Ready",
-            "Out of Stock"});
             this.cbFilter.Location = new System.Drawing.Point(140, 46);
             this.cbFilter.Name = "cbFilter";
             this.cbFilter.Size = new System.Drawing.Size(144, 24);

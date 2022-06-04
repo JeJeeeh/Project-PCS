@@ -138,6 +138,7 @@ namespace Project_Staff
             this.btnFilter.TabIndex = 5;
             this.btnFilter.Text = "Filter";
             this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // btnClear
             // 
@@ -147,6 +148,7 @@ namespace Project_Staff
             this.btnClear.TabIndex = 5;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnMenu
             // 

@@ -37,6 +37,7 @@ namespace Project_Staff
                 conn.Close();
 
                 loadDataGrid();
+                loadComboBox();
             }
             catch (Exception ex)
             {
@@ -46,7 +47,7 @@ namespace Project_Staff
 
         public void loadDataGrid()
         {
-            string query = "select m.me_id as 'ID', m.me_name as 'Name', m.me_price as 'Price', m.me_stock as 'Stock', t.ty_name as 'Type' from menu m join type t on m.me_ty_id = t.ty_id where m.me_status = 1 order by 1";
+            string query = "select m.me_id as 'ID', m.me_name as 'Name', m.me_price as 'Price', t.ty_name as 'Type' from menu m join type t on m.me_ty_id = t.ty_id where m.me_status = 1 order by 1";
             MySqlCommand cmd = new MySqlCommand(query, conn);
 
             conn.Open();
@@ -57,6 +58,24 @@ namespace Project_Staff
             dsMenu = new DataSet();
             da.Fill(dsMenu);
             dgvStaff.DataSource = dsMenu.Tables[0].DefaultView;
+        }
+
+        public void loadComboBox()
+        {
+            string query = "select ty_id as 'ID', ty_name as 'Name' from type";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+
+            conn.Open();
+            cmd.ExecuteReader();
+            conn.Close();
+
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            dtMenu = new DataTable();
+            da.Fill(dtMenu);
+            cbFilter.ValueMember = "ID";
+            cbFilter.DisplayMember = "Name";
+            cbFilter.DataSource = dtMenu.DefaultView;
+            cbFilter.SelectedIndex = 0;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -94,6 +113,21 @@ namespace Project_Staff
         private void btnClearFilter_Click(object sender, EventArgs e)
         {
             loadDataGrid();
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            string query = $"select m.me_id as 'ID', m.me_name as 'Name', m.me_price as 'Price', t.ty_name as 'Type' from menu m join type t on m.me_ty_id = t.ty_id where m.me_status = 1 and m.me_ty_id = {cbFilter.SelectedValue} order by 1";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+
+            conn.Open();
+            cmd.ExecuteReader();
+            conn.Close();
+
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            dsMenu = new DataSet();
+            da.Fill(dsMenu);
+            dgvStaff.DataSource = dsMenu.Tables[0].DefaultView;
         }
     }
 }

@@ -44,7 +44,7 @@ namespace Project_Staff
 
         public void loadDataGrid()
         {
-            string query = "select bu_id as 'ID', bu_name as 'Name', bu_price as 'Price', bu_description as 'Description' from bundle where bu_status = 1 order by 1";
+            string query = "select bu_id as 'ID', bu_name as 'Name', bu_price as 'Price' from bundle where bu_status = 1 order by 1";
             MySqlCommand cmd = new MySqlCommand(query, conn);
 
             conn.Open();
@@ -84,7 +84,26 @@ namespace Project_Staff
 
         private void btnClearFilter_Click(object sender, EventArgs e)
         {
+            tbSearch.Text = "";
             loadDataGrid();
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            if (!tbSearch.Text.Equals(""))
+            {
+                string query = $"select bu_id as 'ID', bu_name as 'Name', bu_price as 'Price' from bundle where bu_status = 1 and bu_name like '%{tbSearch.Text}%' order by 1";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                conn.Open();
+                cmd.ExecuteReader();
+                conn.Close();
+
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                dsBundle = new DataSet();
+                da.Fill(dsBundle);
+                dgvStaff.DataSource = dsBundle.Tables[0].DefaultView;
+            }
         }
     }
 }
