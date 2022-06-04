@@ -19,6 +19,9 @@ namespace Project_Staff
         public Admin_Bundle()
         {
             InitializeComponent();
+
+            connectDB();
+            dgvStaff.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         public void connectDB()
@@ -57,6 +60,31 @@ namespace Project_Staff
         private void btnLogout_Click(object sender, EventArgs e)
         {
             Dispose();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            Admin_Bundle_Add admin = new Admin_Bundle_Add(0);
+            admin.ShowDialog();
+        }
+
+        private void dgvStaff_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            int rowIdx = e.RowIndex;
+
+            if (rowIdx < dsBundle.Tables[0].Rows.Count)
+            {
+                int menu_id = Convert.ToInt32(dgvStaff.Rows[rowIdx].Cells[0].Value.ToString());
+
+                Admin_Bundle_Add admin = new Admin_Bundle_Add(menu_id);
+                admin.ShowDialog();
+                loadDataGrid();
+            }
+        }
+
+        private void btnClearFilter_Click(object sender, EventArgs e)
+        {
+            loadDataGrid();
         }
     }
 }

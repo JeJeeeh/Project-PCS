@@ -45,15 +45,9 @@ namespace Project_Staff
             this.btnSave = new System.Windows.Forms.Button();
             this.rtbDescription = new System.Windows.Forms.RichTextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.cbType = new System.Windows.Forms.ComboBox();
-            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnBack
@@ -87,6 +81,7 @@ namespace Project_Staff
             this.btnFilter.TabIndex = 53;
             this.btnFilter.Text = "Search";
             this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // label2
             // 
@@ -204,55 +199,6 @@ namespace Project_Staff
             this.label9.TabIndex = 71;
             this.label9.Text = "Description :";
             // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel8.Controls.Add(this.label16);
-            this.panel8.Controls.Add(this.label15);
-            this.panel8.Controls.Add(this.label14);
-            this.panel8.Controls.Add(this.label13);
-            this.panel8.Location = new System.Drawing.Point(461, 377);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(182, 249);
-            this.panel8.TabIndex = 73;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(18, 13);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(146, 23);
-            this.label16.TabIndex = 1;
-            this.label16.Text = "Menu Ingredients";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(24, 93);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(105, 17);
-            this.label15.TabIndex = 0;
-            this.label15.Text = "Ingredient 5 x 2";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(24, 69);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(105, 17);
-            this.label14.TabIndex = 0;
-            this.label14.Text = "Ingredient 3 x 1";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(24, 45);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(105, 17);
-            this.label13.TabIndex = 0;
-            this.label13.Text = "Ingredient 1 x 1";
-            // 
             // btnDelete
             // 
             this.btnDelete.BackColor = System.Drawing.Color.Red;
@@ -260,7 +206,7 @@ namespace Project_Staff
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDelete.Location = new System.Drawing.Point(655, 510);
+            this.btnDelete.Location = new System.Drawing.Point(474, 572);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(175, 57);
             this.btnDelete.TabIndex = 55;
@@ -292,7 +238,6 @@ namespace Project_Staff
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(842, 638);
             this.Controls.Add(this.cbType);
-            this.Controls.Add(this.panel8);
             this.Controls.Add(this.rtbDescription);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.tbPrice);
@@ -314,8 +259,6 @@ namespace Project_Staff
             this.Name = "Admin_Menu_Add";
             this.Text = "Admin_Menu_Add";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Admin_Menu_Add_FormClosed);
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -339,11 +282,6 @@ namespace Project_Staff
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.RichTextBox rtbDescription;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ComboBox cbType;
