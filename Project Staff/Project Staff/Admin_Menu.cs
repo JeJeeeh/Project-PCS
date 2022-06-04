@@ -47,7 +47,7 @@ namespace Project_Staff
 
         public void loadDataGrid()
         {
-            string query = "select m.me_id as 'ID', m.me_name as 'Name', m.me_price as 'Price', m.me_stock as 'Stock', t.ty_name as 'Type' from menu m join type t on m.me_ty_id = t.ty_id where m.me_status = 1 order by 1";
+            string query = "select m.me_id as 'ID', m.me_name as 'Name', m.me_price as 'Price', t.ty_name as 'Type' from menu m join type t on m.me_ty_id = t.ty_id where m.me_status = 1 order by 1";
             MySqlCommand cmd = new MySqlCommand(query, conn);
 
             conn.Open();
@@ -113,6 +113,21 @@ namespace Project_Staff
         private void btnClearFilter_Click(object sender, EventArgs e)
         {
             loadDataGrid();
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            string query = $"select m.me_id as 'ID', m.me_name as 'Name', m.me_price as 'Price', t.ty_name as 'Type' from menu m join type t on m.me_ty_id = t.ty_id where m.me_status = 1 and m.me_ty_id = {cbFilter.SelectedValue} order by 1";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+
+            conn.Open();
+            cmd.ExecuteReader();
+            conn.Close();
+
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            dsMenu = new DataSet();
+            da.Fill(dsMenu);
+            dgvStaff.DataSource = dsMenu.Tables[0].DefaultView;
         }
     }
 }
