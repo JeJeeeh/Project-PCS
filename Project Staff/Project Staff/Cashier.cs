@@ -58,7 +58,7 @@ namespace Project_Staff
 
         public void loadDGVPay()
         {
-            string q = "SELECT ht_invoice AS 'Invoice Number', ht_total AS 'Total' FROM htrans WHERE ht_status = 3;";
+            string q = "SELECT ht_invoice AS 'Invoice Number', ht_total AS 'Total' FROM htrans WHERE ht_status = 2;";
             MySqlCommand cmd = new MySqlCommand(q, conn);
 
             conn.Open();
@@ -90,12 +90,28 @@ namespace Project_Staff
 
         private void dgvCashPay_MouseDoubleClick(object sender, MouseEventArgs e)
         {
- 
             string invoiceNum = dgvCashPay.CurrentRow.Cells[0].Value.ToString();
 
-            //MessageBox.Show(invoiceNum);
-
             Cashier_CashPayment f = new Cashier_CashPayment(invoiceNum);
+            Hide();
+            f.ShowDialog();
+            Show();
+        }
+
+        private void dgvReady_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            string invoiceNum = dgvReady.CurrentRow.Cells[0].Value.ToString();
+
+            Cashier_OrderReady f = new Cashier_OrderReady(invoiceNum);
+            Hide();
+            f.ShowDialog();
+            Show();
+            loadDGVReady();
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            Hide();
         }
     }
 }

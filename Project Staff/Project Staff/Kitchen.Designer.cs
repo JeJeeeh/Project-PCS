@@ -44,12 +44,14 @@ namespace Project_Staff
             this.dgvKitchen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvKitchen.Location = new System.Drawing.Point(15, 69);
             this.dgvKitchen.Name = "dgvKitchen";
+            this.dgvKitchen.ReadOnly = true;
             this.dgvKitchen.RowHeadersVisible = false;
             this.dgvKitchen.RowHeadersWidth = 51;
             this.dgvKitchen.RowTemplate.Height = 24;
             this.dgvKitchen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvKitchen.Size = new System.Drawing.Size(776, 383);
             this.dgvKitchen.TabIndex = 8;
+            this.dgvKitchen.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvKitchen_MouseDoubleClick);
             // 
             // btnLogout
             // 
@@ -63,6 +65,7 @@ namespace Project_Staff
             this.btnLogout.TabIndex = 71;
             this.btnLogout.Text = "Log Out";
             this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // lWelcome
             // 

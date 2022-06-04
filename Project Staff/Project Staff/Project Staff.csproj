@@ -161,6 +161,12 @@
     <Compile Include="Kitchen.Designer.cs">
       <DependentUpon>Kitchen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Kitchen_Detail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kitchen_Detail.Designer.cs">
+      <DependentUpon>Kitchen_Detail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Admin.resx">
@@ -198,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Kitchen.resx">
       <DependentUpon>Kitchen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kitchen_Detail.resx">
+      <DependentUpon>Kitchen_Detail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

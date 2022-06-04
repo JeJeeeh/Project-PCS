@@ -22,11 +22,11 @@ namespace Project_Staff
             InitializeComponent();
             this.invoice = invoice;
 
-            lTNum.Text = "Welcome " + invoice;
+            lTNum.Text = "Invoice Number = " + invoice;
             connectDB();
 
-            dgvCashier.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvCashier.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvCashier.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         public void connectDB()
@@ -40,6 +40,7 @@ namespace Project_Staff
                 conn.Close();
 
                 loadDGVCashPay();
+                loadTotal();
             }
             catch (Exception ex)
             {
@@ -51,7 +52,7 @@ namespace Project_Staff
 
         public void loadDGVCashPay()
         {
-            string q = $"SELECT ht_invoice AS 'Invoice Number', ht_total AS 'Total' FROM dtrans dt, htrans ht WHERE dt.dt_ht_id = ht.ht_id AND ht.ht_invoice = {invoice};";
+            string q = $"SELECT dt.dt_amount AS 'Amount', m.me_name AS 'Nama Menu', m.me_price AS 'Harga', (m.me_price * dt.dt_amount) AS 'Total' FROM dtrans dt JOIN htrans ht ON dt.dt_ht_id = ht.ht_id JOIN menu m ON m.me_id = dt.dt_me_id WHERE ht.ht_invoice = '{invoice}'; ";
             MySqlCommand cmd = new MySqlCommand(q, conn);
 
             conn.Open();
@@ -63,5 +64,48 @@ namespace Project_Staff
             da.Fill(dtPay);
             dgvCashier.DataSource = dtPay;
         }
+
+        public void loadTotal()
+        {
+            string q = $"SELECT SUM(m.me_price * dt.dt_amount) AS 'Grand Total' FROM dtrans dt JOIN htrans ht ON dt.dt_ht_id = ht.ht_id JOIN menu m ON m.me_id = dt.dt_me_id WHERE ht.ht_invoice = '{invoice}'; ";
+            MySqlCommand cmd = new MySqlCommand(q, conn);
+
+            conn.Open();
+            string grandTotal = cmd.ExecuteScalar().ToString();
+            conn.Close();
+
+            lTotal.Text = "Total = Rp." + grandTotal;
+
+            int totalPPN = Convert.ToInt32(grandTotal)/10 + Convert.ToInt32(grandTotal);
+
+            lGrandTotal.Text = "Grand Total = Rp." + totalPPN.ToString();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Hide();
+        }
+
+        private void btnPay_Click(object sender, EventArgs e)
+        {
+            string query = $"UPDATE htrans SET ht_status = '3' WHERE ht_invoice = {invoice}; ";
+
+            try
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                conn.Close();
+            }
+
+            MessageBox.Show("Transaction Has Been Paid!!!");
+            Hide();
+        }
+
     }
 }

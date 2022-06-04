@@ -85,6 +85,7 @@ namespace Project_Staff
             this.dgvReady.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvReady.Size = new System.Drawing.Size(743, 278);
             this.dgvReady.TabIndex = 7;
+            this.dgvReady.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvReady_MouseDoubleClick);
             // 
             // groupBox2
             // 
@@ -118,6 +119,7 @@ namespace Project_Staff
             this.btnLogOut.TabIndex = 71;
             this.btnLogOut.Text = "Log Out";
             this.btnLogOut.UseVisualStyleBackColor = false;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // Cashier
             // 

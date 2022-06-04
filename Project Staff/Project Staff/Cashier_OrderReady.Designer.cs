@@ -29,32 +29,29 @@ namespace Project_Staff
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
+            this.dgvCashierDetail = new System.Windows.Forms.DataGridView();
             this.btnDone = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.lTNum = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCashierDetail)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvCashierDetail
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 73);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(775, 294);
-            this.dataGridView1.TabIndex = 5;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 45);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 25);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Detail Order";
+            this.dgvCashierDetail.AllowUserToAddRows = false;
+            this.dgvCashierDetail.AllowUserToDeleteRows = false;
+            this.dgvCashierDetail.AllowUserToResizeColumns = false;
+            this.dgvCashierDetail.AllowUserToResizeRows = false;
+            this.dgvCashierDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCashierDetail.Location = new System.Drawing.Point(13, 73);
+            this.dgvCashierDetail.Name = "dgvCashierDetail";
+            this.dgvCashierDetail.ReadOnly = true;
+            this.dgvCashierDetail.RowHeadersVisible = false;
+            this.dgvCashierDetail.RowHeadersWidth = 51;
+            this.dgvCashierDetail.RowTemplate.Height = 24;
+            this.dgvCashierDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCashierDetail.Size = new System.Drawing.Size(775, 294);
+            this.dgvCashierDetail.TabIndex = 5;
             // 
             // btnDone
             // 
@@ -69,6 +66,7 @@ namespace Project_Staff
             this.btnDone.TabIndex = 72;
             this.btnDone.Text = "Done";
             this.btnDone.UseVisualStyleBackColor = false;
+            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
             // 
             // btnBack
             // 
@@ -82,28 +80,39 @@ namespace Project_Staff
             this.btnBack.TabIndex = 71;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // lTNum
+            // 
+            this.lTNum.AutoSize = true;
+            this.lTNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lTNum.Location = new System.Drawing.Point(12, 23);
+            this.lTNum.Name = "lTNum";
+            this.lTNum.Size = new System.Drawing.Size(313, 25);
+            this.lTNum.TabIndex = 73;
+            this.lTNum.Text = "Transaction Number : blablabla";
             // 
             // Cashier_OrderReady
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(797, 438);
+            this.Controls.Add(this.lTNum);
             this.Controls.Add(this.btnDone);
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dgvCashierDetail);
             this.Name = "Cashier_OrderReady";
             this.Text = "Cashier_OrderReady";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCashierDetail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dgvCashierDetail;
         private System.Windows.Forms.Button btnDone;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Label lTNum;
     }
 }

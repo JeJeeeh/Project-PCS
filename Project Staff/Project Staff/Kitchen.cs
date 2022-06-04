@@ -64,5 +64,20 @@ namespace Project_Staff
             da.Fill(dtKitchen);
             dgvKitchen.DataSource = dtKitchen;
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Hide();
+        }
+
+        private void dgvKitchen_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            string invoiceNum = dgvKitchen.CurrentRow.Cells[0].Value.ToString();
+
+            Kitchen_Detail f = new Kitchen_Detail(invoiceNum);
+            Hide();
+            f.ShowDialog();
+            Show();
+        }
     }
 }
