@@ -125,3 +125,4 @@ C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project Staf
 C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project Staff.exe
 C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project Staff.pdb
 C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.Kitchen_Detail.resources
+C:\Users\jason\OneDrive\Documents\Kuliah\Sem 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.Kitchen_Detail.resources

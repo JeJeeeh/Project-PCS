@@ -148,8 +148,6 @@ namespace Project_Staff
 
         private void loadMenu(int menu_id)
         {
-            pnlContainer.Controls.Clear();
-
             string query = $"select m.me_id as 'ID', m.me_name as 'Name', m.me_price as 'Price', m.me_description 'Desc', t.ty_name as 'Type' from menu m join type t on m.me_ty_id = t.ty_id where me_id = {menu_id}";
 
             MySqlCommand cmd = new MySqlCommand(query, conn);
