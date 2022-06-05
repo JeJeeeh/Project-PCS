@@ -28,7 +28,7 @@ namespace Project_Staff
 
             this.bundle_id = bundle_id;
             connectDB();
-            loadMenu();
+            loadMenuCards();
 
             if (bundle_id > 0)
             {
@@ -112,8 +112,9 @@ namespace Project_Staff
             return nup;
         }
 
-        private void loadMenu()
+        private void loadMenuCards()
         {
+            pnlContainer.Controls.Clear();
             string query = $"select me_name as 'Name', me_id as 'ID' from menu";
 
             MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -322,7 +323,8 @@ namespace Project_Staff
 
         private void btnClearFilter_Click(object sender, EventArgs e)
         {
-            loadMenu();
+            tbSearch.Text = "";
+            loadMenuCards();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -362,6 +364,69 @@ namespace Project_Staff
                     MessageBox.Show(ex.Message);
                     conn.Close();
                 }
+            }
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            if (!tbSearch.Equals(""))
+            {
+                pnlContainer.Controls.Clear();
+                string query = $"select me_name as 'Name', me_id as 'ID' from menu where me_name like '%{tbSearch.Text}%'";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                conn.Open();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                int x = 0, y = 0;
+
+                while (rdr.Read())
+                {
+                    string menu_name = rdr["Name"].ToString();
+                    string menu_id = rdr["ID"].ToString();
+
+                    Panel pnl = createPanel(x, y);
+                    Label lblName = createLabel(menu_name);
+                    NumericUpDown nup = createNup();
+
+                    pnl.Controls.Add(lblName);
+                    pnl.Controls.Add(nup);
+                    pnlContainer.Controls.Add(pnl);
+
+                    names.Add(menu_id);
+                    counts.Add(nup);
+
+                    x++;
+                    if (x == 4)
+                    {
+                        y++;
+                        x = x % 4;
+                    }
+                }
+
+                conn.Close();
+
+                query = $"select mb_me_id as 'menu_id', mb_quantity as 'quantity' from menu_bundle where mb_bu_id = {bundle_id}";
+
+                cmd = new MySqlCommand(query, conn);
+
+                conn.Open();
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    for (int i = 0; i < names.Count; i++)
+                    {
+                        if (names.ElementAt(i).Equals(rdr["menu_id"].ToString()))
+                        {
+                            counts.ElementAt(i).Value = Convert.ToInt32(rdr["quantity"].ToString());
+                        }
+                    }
+                }
+
+                rdr.Close();
+                conn.Close();
             }
         }
     }

@@ -38,7 +38,7 @@ namespace Project_Staff
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.pnlContainer = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbSearch = new System.Windows.Forms.TextBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
@@ -126,12 +126,12 @@ namespace Project_Staff
             this.pnlContainer.Size = new System.Drawing.Size(823, 283);
             this.pnlContainer.TabIndex = 83;
             // 
-            // textBox1
+            // tbSearch
             // 
-            this.textBox1.Location = new System.Drawing.Point(135, 47);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(197, 22);
-            this.textBox1.TabIndex = 82;
+            this.tbSearch.Location = new System.Drawing.Point(135, 47);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(197, 22);
+            this.tbSearch.TabIndex = 82;
             // 
             // btnDelete
             // 
@@ -195,6 +195,7 @@ namespace Project_Staff
             this.btnFilter.TabIndex = 77;
             this.btnFilter.Text = "Search";
             this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // label2
             // 
@@ -229,7 +230,7 @@ namespace Project_Staff
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.pnlContainer);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnBack);
@@ -254,7 +255,7 @@ namespace Project_Staff
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Panel pnlContainer;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbSearch;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnBack;
