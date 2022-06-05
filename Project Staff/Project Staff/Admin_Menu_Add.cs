@@ -421,57 +421,65 @@ namespace Project_Staff
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
-            pnlContainer.Controls.Clear();
-
-            string query = $"select m.me_id as 'ID', m.me_name as 'Name', m.me_price as 'Price', m.me_description 'Desc', t.ty_name as 'Type' from menu m join type t on m.me_ty_id = t.ty_id where me_id = {menu_id}";
-
-            MySqlCommand cmd = new MySqlCommand(query, conn);
-
-            conn.Open();
-            MySqlDataReader rdr = cmd.ExecuteReader();
-
-            while (rdr.Read())
+            if (!tbSearch.Equals(""))
             {
-                tbId.Text = rdr["ID"].ToString();
-                tbName.Text = rdr["Name"].ToString();
-                tbPrice.Text = rdr["Price"].ToString();
-                rtbDescription.Text = rdr["Desc"].ToString();
+                pnlContainer.Controls.Clear();
+                string query = $"select in_name as 'Name', in_id as 'ID' from ingredient where in_name like '%{tbSearch.Text}%'";
 
-                string type = rdr["Type"].ToString();
-                int i;
-                for (i = 0; i < cbType.Items.Count; i++)
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                conn.Open();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                int x = 0, y = 0;
+
+                while (rdr.Read())
                 {
-                    string value = cbType.GetItemText(cbType.Items[i]);
-                    if (type.Equals(value))
+                    string menu_name = rdr["Name"].ToString();
+                    string menu_id = rdr["ID"].ToString();
+
+                    Panel pnl = createPanel(x, y);
+                    Label lblName = createLabel(menu_name);
+                    NumericUpDown nup = createNup();
+
+                    pnl.Controls.Add(lblName);
+                    pnl.Controls.Add(nup);
+                    pnlContainer.Controls.Add(pnl);
+
+                    names.Add(menu_id);
+                    counts.Add(nup);
+
+                    x++;
+                    if (x == 4)
                     {
-                        break;
+                        y++;
+                        x = x % 4;
                     }
                 }
-                cbType.SelectedIndex = i;
-            }
 
-            conn.Close();
+                conn.Close();
 
-            query = $"select mi_in_id as 'ingredient_id', mi_quantity as 'quantity' from menu_ingredient where mi_me_id = {menu_id}";
+                query = $"select mi_in_id as 'ingredient_id', mi_quantity as 'quantity' from menu_ingredient where mi_me_id = {menu_id}";
 
-            cmd = new MySqlCommand(query, conn);
+                cmd = new MySqlCommand(query, conn);
 
-            conn.Open();
-            rdr = cmd.ExecuteReader();
+                conn.Open();
+                rdr = cmd.ExecuteReader();
 
-            while (rdr.Read())
-            {
-                for (int i = 0; i < names.Count; i++)
+                while (rdr.Read())
                 {
-                    if (names.ElementAt(i).Equals(rdr["ingredient_id"].ToString()))
+                    for (int i = 0; i < names.Count; i++)
                     {
-                        counts.ElementAt(i).Value = Convert.ToInt32(rdr["quantity"].ToString());
+                        if (names.ElementAt(i).Equals(rdr["ingredient_id"].ToString()))
+                        {
+                            counts.ElementAt(i).Value = Convert.ToInt32(rdr["quantity"].ToString());
+                        }
                     }
                 }
-            }
 
-            rdr.Close();
-            conn.Close();
+                rdr.Close();
+                conn.Close();
+            }
         }
     }
 }

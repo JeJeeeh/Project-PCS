@@ -34,7 +34,7 @@ namespace Project_Staff
             this.btnFilter = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbSearch = new System.Windows.Forms.TextBox();
             this.pnlContainer = new System.Windows.Forms.Panel();
             this.tbPrice = new System.Windows.Forms.TextBox();
             this.tbName = new System.Windows.Forms.TextBox();
@@ -102,12 +102,12 @@ namespace Project_Staff
             this.label1.TabIndex = 49;
             this.label1.Text = "Welcome Admin";
             // 
-            // textBox1
+            // tbSearch
             // 
-            this.textBox1.Location = new System.Drawing.Point(135, 45);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(197, 22);
-            this.textBox1.TabIndex = 57;
+            this.tbSearch.Location = new System.Drawing.Point(135, 45);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(197, 22);
+            this.tbSearch.TabIndex = 57;
             // 
             // pnlContainer
             // 
@@ -248,7 +248,7 @@ namespace Project_Staff
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.pnlContainer);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnBack);
@@ -271,7 +271,7 @@ namespace Project_Staff
         private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbSearch;
         private System.Windows.Forms.Panel pnlContainer;
         private System.Windows.Forms.TextBox tbPrice;
         private System.Windows.Forms.TextBox tbName;
