@@ -265,5 +265,10 @@ namespace Project_Staff
         {
             loadDataGrid();
         }
+
+        private void Admin_Staff_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

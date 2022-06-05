@@ -125,5 +125,36 @@ namespace Project_Staff
                 MessageBox.Show("Tanggal ke-2 harus lebih kecil!");
             }
         }
+
+        private void dgvTransaction_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Admin_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvTransaction_CellContentClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            int rowIdx = e.RowIndex;
+
+      
+
+            if (rowIdx < dsTransaction.Tables[0].Rows.Count)
+            {
+                CrystalReport1 rpt = new CrystalReport1();
+                rpt.SetDatabaseLogon("root", "", "localhost", "project_pcs");
+                rpt.SetParameterValue("htransid", Convert.ToInt32(dgvTransaction.Rows[rowIdx].Cells[0].Value.ToString()));
+                FormReport reportt = new FormReport(rpt);
+                reportt.ShowDialog();
+
+
+
+
+
+            }
+        }
     }
 }

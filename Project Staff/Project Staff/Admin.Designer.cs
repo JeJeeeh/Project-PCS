@@ -32,7 +32,6 @@ namespace Project_Staff
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin));
             this.label1 = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
-            this.dgvTransaction = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.dateStart = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,22 +48,24 @@ namespace Project_Staff
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTransaction)).BeginInit();
+            this.dgvTransaction = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTransaction)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(268, 11);
+            this.label1.Location = new System.Drawing.Point(201, 9);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(169, 25);
+            this.label1.Size = new System.Drawing.Size(137, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Welcome Admin";
             // 
@@ -74,67 +75,59 @@ namespace Project_Staff
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnLogout.Location = new System.Drawing.Point(934, 14);
+            this.btnLogout.Location = new System.Drawing.Point(684, 17);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(110, 57);
+            this.btnLogout.Size = new System.Drawing.Size(82, 46);
             this.btnLogout.TabIndex = 1;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
-            // dgvTransaction
-            // 
-            this.dgvTransaction.AllowUserToAddRows = false;
-            this.dgvTransaction.AllowUserToDeleteRows = false;
-            this.dgvTransaction.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTransaction.Location = new System.Drawing.Point(273, 77);
-            this.dgvTransaction.Name = "dgvTransaction";
-            this.dgvTransaction.ReadOnly = true;
-            this.dgvTransaction.RowHeadersVisible = false;
-            this.dgvTransaction.RowHeadersWidth = 51;
-            this.dgvTransaction.RowTemplate.Height = 24;
-            this.dgvTransaction.Size = new System.Drawing.Size(771, 428);
-            this.dgvTransaction.TabIndex = 2;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(270, 48);
+            this.label2.Location = new System.Drawing.Point(202, 39);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 17);
+            this.label2.Size = new System.Drawing.Size(85, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Daftar Transaksi";
             // 
             // dateStart
             // 
             this.dateStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateStart.Location = new System.Drawing.Point(398, 46);
+            this.dateStart.Location = new System.Drawing.Point(298, 37);
+            this.dateStart.Margin = new System.Windows.Forms.Padding(2);
             this.dateStart.Name = "dateStart";
-            this.dateStart.Size = new System.Drawing.Size(124, 22);
+            this.dateStart.Size = new System.Drawing.Size(94, 20);
             this.dateStart.TabIndex = 4;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(528, 48);
+            this.label3.Location = new System.Drawing.Point(396, 39);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(25, 17);
+            this.label3.Size = new System.Drawing.Size(20, 13);
             this.label3.TabIndex = 3;
             this.label3.Text = "To";
             // 
             // dateFinish
             // 
             this.dateFinish.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateFinish.Location = new System.Drawing.Point(559, 46);
+            this.dateFinish.Location = new System.Drawing.Point(419, 37);
+            this.dateFinish.Margin = new System.Windows.Forms.Padding(2);
             this.dateFinish.Name = "dateFinish";
-            this.dateFinish.Size = new System.Drawing.Size(124, 22);
+            this.dateFinish.Size = new System.Drawing.Size(94, 20);
             this.dateFinish.TabIndex = 4;
             // 
             // btnFilter
             // 
-            this.btnFilter.Location = new System.Drawing.Point(689, 44);
+            this.btnFilter.Location = new System.Drawing.Point(517, 36);
+            this.btnFilter.Margin = new System.Windows.Forms.Padding(2);
             this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(97, 26);
+            this.btnFilter.Size = new System.Drawing.Size(73, 21);
             this.btnFilter.TabIndex = 5;
             this.btnFilter.Text = "Filter";
             this.btnFilter.UseVisualStyleBackColor = true;
@@ -142,9 +135,10 @@ namespace Project_Staff
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(792, 44);
+            this.btnClear.Location = new System.Drawing.Point(594, 36);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(2);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(97, 26);
+            this.btnClear.Size = new System.Drawing.Size(73, 21);
             this.btnClear.TabIndex = 5;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -155,9 +149,10 @@ namespace Project_Staff
             this.btnMenu.BackColor = System.Drawing.Color.White;
             this.btnMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenu.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMenu.Location = new System.Drawing.Point(3, 255);
+            this.btnMenu.Location = new System.Drawing.Point(2, 207);
+            this.btnMenu.Margin = new System.Windows.Forms.Padding(2);
             this.btnMenu.Name = "btnMenu";
-            this.btnMenu.Size = new System.Drawing.Size(232, 57);
+            this.btnMenu.Size = new System.Drawing.Size(174, 46);
             this.btnMenu.TabIndex = 1;
             this.btnMenu.Text = "Menu";
             this.btnMenu.UseVisualStyleBackColor = false;
@@ -168,9 +163,10 @@ namespace Project_Staff
             this.btnStaff.BackColor = System.Drawing.Color.White;
             this.btnStaff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStaff.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStaff.Location = new System.Drawing.Point(3, 192);
+            this.btnStaff.Location = new System.Drawing.Point(2, 156);
+            this.btnStaff.Margin = new System.Windows.Forms.Padding(2);
             this.btnStaff.Name = "btnStaff";
-            this.btnStaff.Size = new System.Drawing.Size(232, 57);
+            this.btnStaff.Size = new System.Drawing.Size(174, 46);
             this.btnStaff.TabIndex = 1;
             this.btnStaff.Text = "Staff";
             this.btnStaff.UseVisualStyleBackColor = false;
@@ -181,9 +177,10 @@ namespace Project_Staff
             this.btnIngredient.BackColor = System.Drawing.Color.White;
             this.btnIngredient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIngredient.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIngredient.Location = new System.Drawing.Point(3, 129);
+            this.btnIngredient.Location = new System.Drawing.Point(2, 105);
+            this.btnIngredient.Margin = new System.Windows.Forms.Padding(2);
             this.btnIngredient.Name = "btnIngredient";
-            this.btnIngredient.Size = new System.Drawing.Size(232, 57);
+            this.btnIngredient.Size = new System.Drawing.Size(174, 46);
             this.btnIngredient.TabIndex = 1;
             this.btnIngredient.Text = "Ingredient";
             this.btnIngredient.UseVisualStyleBackColor = false;
@@ -201,18 +198,20 @@ namespace Project_Staff
             this.panel1.Controls.Add(this.btnIngredient);
             this.panel1.Controls.Add(this.btnStaff);
             this.panel1.Controls.Add(this.btnMenu);
-            this.panel1.Location = new System.Drawing.Point(13, 8);
+            this.panel1.Location = new System.Drawing.Point(10, 6);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(238, 497);
+            this.panel1.Size = new System.Drawing.Size(178, 492);
             this.panel1.TabIndex = 6;
             // 
             // pictureBox5
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.White;
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(14, 321);
+            this.pictureBox5.Location = new System.Drawing.Point(10, 261);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(49, 52);
+            this.pictureBox5.Size = new System.Drawing.Size(37, 42);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 4;
             this.pictureBox5.TabStop = false;
@@ -222,9 +221,10 @@ namespace Project_Staff
             this.btnBundle.BackColor = System.Drawing.Color.White;
             this.btnBundle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBundle.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBundle.Location = new System.Drawing.Point(3, 318);
+            this.btnBundle.Location = new System.Drawing.Point(2, 258);
+            this.btnBundle.Margin = new System.Windows.Forms.Padding(2);
             this.btnBundle.Name = "btnBundle";
-            this.btnBundle.Size = new System.Drawing.Size(232, 57);
+            this.btnBundle.Size = new System.Drawing.Size(174, 46);
             this.btnBundle.TabIndex = 3;
             this.btnBundle.Text = "Bundle";
             this.btnBundle.UseVisualStyleBackColor = false;
@@ -234,9 +234,10 @@ namespace Project_Staff
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.White;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(14, 134);
+            this.pictureBox3.Location = new System.Drawing.Point(10, 109);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(49, 46);
+            this.pictureBox3.Size = new System.Drawing.Size(37, 37);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 2;
             this.pictureBox3.TabStop = false;
@@ -245,9 +246,10 @@ namespace Project_Staff
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.White;
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(14, 258);
+            this.pictureBox4.Location = new System.Drawing.Point(10, 210);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(49, 52);
+            this.pictureBox4.Size = new System.Drawing.Size(37, 42);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 2;
             this.pictureBox4.TabStop = false;
@@ -256,9 +258,10 @@ namespace Project_Staff
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.White;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(14, 194);
+            this.pictureBox2.Location = new System.Drawing.Point(10, 158);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(49, 52);
+            this.pictureBox2.Size = new System.Drawing.Size(37, 42);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
@@ -266,18 +269,36 @@ namespace Project_Staff
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(47, 6);
+            this.pictureBox1.Location = new System.Drawing.Point(35, 5);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(132, 112);
+            this.pictureBox1.Size = new System.Drawing.Size(99, 91);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // dgvTransaction
+            // 
+            this.dgvTransaction.AllowUserToAddRows = false;
+            this.dgvTransaction.AllowUserToDeleteRows = false;
+            this.dgvTransaction.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTransaction.Location = new System.Drawing.Point(205, 79);
+            this.dgvTransaction.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvTransaction.Name = "dgvTransaction";
+            this.dgvTransaction.ReadOnly = true;
+            this.dgvTransaction.RowHeadersVisible = false;
+            this.dgvTransaction.RowHeadersWidth = 51;
+            this.dgvTransaction.RowTemplate.Height = 24;
+            this.dgvTransaction.Size = new System.Drawing.Size(557, 376);
+            this.dgvTransaction.TabIndex = 8;
+            this.dgvTransaction.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTransaction_CellContentClick);
+            // 
             // Admin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1056, 517);
+            this.ClientSize = new System.Drawing.Size(787, 499);
+            this.Controls.Add(this.dgvTransaction);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnFilter);
@@ -285,19 +306,20 @@ namespace Project_Staff
             this.Controls.Add(this.dateStart);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dgvTransaction);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Admin";
             this.Text = "Admin";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTransaction)).EndInit();
+            this.Load += new System.EventHandler(this.Admin_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTransaction)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -307,7 +329,6 @@ namespace Project_Staff
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnLogout;
-        private System.Windows.Forms.DataGridView dgvTransaction;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dateStart;
         private System.Windows.Forms.Label label3;
@@ -324,5 +345,6 @@ namespace Project_Staff
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Button btnBundle;
+        private System.Windows.Forms.DataGridView dgvTransaction;
     }
 }
