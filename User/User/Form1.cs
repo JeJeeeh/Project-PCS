@@ -281,8 +281,8 @@ namespace User
             }
             if (press == 4)
             {
-                lbdescription.Text = "Paket ini berisi ";
-                string query = $"SELECT me_name as texts FROM menu ,(SELECT mb_me_id AS idbud FROM bundle,menu_bundle WHERE bu_name = '" + button.Text + "' ORDER BY mb_me_id ASC) mn WHERE me_id = mn.idbud;";
+                lbdescription.Text = "Paket ini berisi : ";
+                string query = $"SELECT bu_description AS texts FROM bundle WHERE bu_name = '"+ button.Text + "';";
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
 
@@ -293,14 +293,7 @@ namespace User
 
                 while (rdr.Read())
                 {
-                    if (i == 0)
-                    {
                         lbdescription.Text = lbdescription.Text + rdr["texts"].ToString();
-                    }
-                    else
-                    {
-                        lbdescription.Text = lbdescription.Text + ", " + rdr["texts"].ToString();
-                    }
                     i++;
                 }
                 conn.Close();
