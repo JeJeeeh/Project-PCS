@@ -52,7 +52,7 @@ namespace Project_Staff
 
         public void loadDGVKitchen()
         {
-            string q = "SELECT ht_invoice AS 'Invoice Number', ht_total AS 'Total' FROM htrans WHERE ht_status = 2;";
+            string q = "SELECT ht_invoice AS 'Invoice Number', ht_total AS 'Total' FROM htrans WHERE ht_status = 3;";
             MySqlCommand cmd = new MySqlCommand(q, conn);
 
             conn.Open();
@@ -63,6 +63,22 @@ namespace Project_Staff
             dtKitchen = new DataTable();
             da.Fill(dtKitchen);
             dgvKitchen.DataSource = dtKitchen;
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Hide();
+        }
+
+        private void dgvKitchen_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            string invoiceNum = dgvKitchen.CurrentRow.Cells[0].Value.ToString();
+
+            Kitchen_Detail f = new Kitchen_Detail(invoiceNum);
+            Hide();
+            f.ShowDialog();
+            Show();
+            loadDGVKitchen();
         }
     }
 }

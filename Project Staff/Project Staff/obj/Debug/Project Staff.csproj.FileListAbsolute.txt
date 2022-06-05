@@ -80,3 +80,48 @@ C:\Users\jason\OneDrive\Documents\Kuliah\Sem 4\PCS\Project-PCS\Project Staff\Pro
 C:\Users\jason\OneDrive\Documents\Kuliah\Sem 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.Cashier_OrderReady.resources
 C:\Users\jason\OneDrive\Documents\Kuliah\Sem 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.Kitchen.resources
 C:\Users\jason\OneDrive\Documents\Kuliah\Sem 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.Admin_Bundle_Add.resources
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\bin\Debug\Project Staff.exe.config
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\bin\Debug\Project Staff.exe
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\bin\Debug\Project Staff.pdb
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\bin\Debug\BouncyCastle.Crypto.dll
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\bin\Debug\Google.Protobuf.dll
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\bin\Debug\K4os.Compression.LZ4.dll
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\bin\Debug\K4os.Hash.xxHash.dll
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\bin\Debug\MySql.Data.dll
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\bin\Debug\System.Buffers.dll
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\bin\Debug\System.Memory.dll
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\bin\Debug\System.Numerics.Vectors.dll
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\bin\Debug\Ubiety.Dns.Core.dll
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\bin\Debug\ZstdNet.dll
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\bin\Debug\Google.Protobuf.pdb
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\bin\Debug\Google.Protobuf.xml
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\bin\Debug\K4os.Compression.LZ4.xml
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\bin\Debug\K4os.Compression.LZ4.Streams.xml
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\bin\Debug\K4os.Hash.xxHash.xml
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\bin\Debug\MySql.Data.xml
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\bin\Debug\System.Buffers.xml
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\bin\Debug\System.Memory.xml
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\bin\Debug\System.Numerics.Vectors.xml
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project Staff.csproj.AssemblyReference.cache
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.Admin.resources
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.Admin_Bundle.resources
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.Admin_Bundle_Add.resources
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.Admin_Ingredient.resources
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.Admin_Menu.resources
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.Admin_Menu_Add.resources
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.Admin_Staff.resources
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.Cashier.resources
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.Cashier_CashPayment.resources
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.Cashier_OrderReady.resources
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.Login.resources
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.Kitchen.resources
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.Properties.Resources.resources
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project Staff.csproj.GenerateResource.cache
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project Staff.csproj.CoreCompileInputs.cache
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project Staff.csproj.CopyComplete
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project Staff.exe
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project Staff.pdb
+C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.Kitchen_Detail.resources

@@ -11,12 +11,13 @@ using MySql.Data.MySqlClient;
 
 namespace Project_Staff
 {
-    public partial class Cashier_OrderReady : Form
+    public partial class Kitchen_Detail : Form
     {
         MySqlConnection conn;
         string connString;
         string invoice;
-        public Cashier_OrderReady(string invoice)
+
+        public Kitchen_Detail(string invoice)
         {
             InitializeComponent();
 
@@ -25,8 +26,8 @@ namespace Project_Staff
             lTNum.Text = "Invoice Number = " + invoice;
             connectDB();
 
-            dgvCashierDetail.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvCashierDetail.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvKitchenDetail.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvKitchenDetail.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         public void connectDB()
@@ -39,7 +40,7 @@ namespace Project_Staff
                 conn.Open();
                 conn.Close();
 
-                loadDGVDetail();
+                loadDGVKitchenDetail();
             }
             catch (Exception ex)
             {
@@ -47,11 +48,11 @@ namespace Project_Staff
             }
         }
 
-        DataTable dtDetail;
+        DataTable dtKitchenDetail;
 
-        public void loadDGVDetail()
+        public void loadDGVKitchenDetail()
         {
-            string q = $"SELECT dt.dt_amount AS 'Amount', m.me_name AS 'Nama Menu', m.me_price AS 'Harga', (m.me_price * dt.dt_amount) AS 'Total' FROM dtrans dt JOIN htrans ht ON dt.dt_ht_id = ht.ht_id JOIN menu m ON m.me_id = dt.dt_me_id WHERE ht.ht_invoice = '{invoice}'; ";
+            string q = $"SELECT dt.dt_amount AS 'Amount', m.me_name AS 'Nama Menu' FROM dtrans dt JOIN htrans ht ON dt.dt_ht_id = ht.ht_id JOIN menu m ON m.me_id = dt.dt_me_id WHERE ht.ht_invoice = '{invoice}'; ";
             MySqlCommand cmd = new MySqlCommand(q, conn);
 
             conn.Open();
@@ -59,19 +60,14 @@ namespace Project_Staff
             conn.Close();
 
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-            dtDetail = new DataTable();
-            da.Fill(dtDetail);
-            dgvCashierDetail.DataSource = dtDetail;
+            dtKitchenDetail = new DataTable();
+            da.Fill(dtKitchenDetail);
+            dgvKitchenDetail.DataSource = dtKitchenDetail;
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
+        private void btnCook_Click(object sender, EventArgs e)
         {
-            Hide();
-        }
-
-        private void btnDone_Click(object sender, EventArgs e)
-        {
-            string query = $"UPDATE htrans SET ht_status = '4' WHERE ht_invoice = {invoice}; ";
+            string query = $"UPDATE htrans SET ht_status = '1' WHERE ht_invoice = {invoice}; ";
 
             try
             {
@@ -86,7 +82,12 @@ namespace Project_Staff
                 conn.Close();
             }
 
-            MessageBox.Show("Order has been taken!!!");
+            MessageBox.Show("Order has been cooked!!!");
+            Hide();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
             Hide();
         }
     }

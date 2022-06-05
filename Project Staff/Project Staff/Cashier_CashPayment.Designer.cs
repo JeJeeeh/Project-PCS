@@ -29,25 +29,25 @@ namespace Project_Staff
         /// </summary>
         private void InitializeComponent()
         {
-            this.label5 = new System.Windows.Forms.Label();
+            this.lGrandTotal = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lTNum = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lTotal = new System.Windows.Forms.Label();
             this.dgvCashier = new System.Windows.Forms.DataGridView();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnPay = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCashier)).BeginInit();
             this.SuspendLayout();
             // 
-            // label5
+            // lGrandTotal
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(496, 429);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(261, 25);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Grand Total : Rp. 110.000";
+            this.lGrandTotal.AutoSize = true;
+            this.lGrandTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lGrandTotal.Location = new System.Drawing.Point(487, 429);
+            this.lGrandTotal.Name = "lGrandTotal";
+            this.lGrandTotal.Size = new System.Drawing.Size(267, 25);
+            this.lGrandTotal.TabIndex = 14;
+            this.lGrandTotal.Text = "Grand Total = Rp. 110.000";
             // 
             // label4
             // 
@@ -55,9 +55,9 @@ namespace Project_Staff
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(579, 404);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(91, 20);
+            this.label4.Size = new System.Drawing.Size(96, 20);
             this.label4.TabIndex = 13;
-            this.label4.Text = "PPN : 10%";
+            this.label4.Text = "PPN = 10%";
             // 
             // lTNum
             // 
@@ -69,23 +69,30 @@ namespace Project_Staff
             this.lTNum.TabIndex = 12;
             this.lTNum.Text = "Transaction Number : blablabla";
             // 
-            // label1
+            // lTotal
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(564, 372);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(184, 24);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Total : Rp. 100.000";
+            this.lTotal.AutoSize = true;
+            this.lTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lTotal.Location = new System.Drawing.Point(564, 372);
+            this.lTotal.Name = "lTotal";
+            this.lTotal.Size = new System.Drawing.Size(190, 24);
+            this.lTotal.TabIndex = 11;
+            this.lTotal.Text = "Total = Rp. 100.000";
             // 
             // dgvCashier
             // 
+            this.dgvCashier.AllowUserToAddRows = false;
+            this.dgvCashier.AllowUserToDeleteRows = false;
+            this.dgvCashier.AllowUserToResizeColumns = false;
+            this.dgvCashier.AllowUserToResizeRows = false;
             this.dgvCashier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCashier.Location = new System.Drawing.Point(14, 75);
             this.dgvCashier.Name = "dgvCashier";
+            this.dgvCashier.ReadOnly = true;
+            this.dgvCashier.RowHeadersVisible = false;
             this.dgvCashier.RowHeadersWidth = 51;
             this.dgvCashier.RowTemplate.Height = 24;
+            this.dgvCashier.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCashier.Size = new System.Drawing.Size(775, 286);
             this.dgvCashier.TabIndex = 10;
             // 
@@ -101,6 +108,7 @@ namespace Project_Staff
             this.btnBack.TabIndex = 70;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnPay
             // 
@@ -115,6 +123,7 @@ namespace Project_Staff
             this.btnPay.TabIndex = 71;
             this.btnPay.Text = "Pay";
             this.btnPay.UseVisualStyleBackColor = false;
+            this.btnPay.Click += new System.EventHandler(this.btnPay_Click);
             // 
             // Cashier_CashPayment
             // 
@@ -123,10 +132,10 @@ namespace Project_Staff
             this.ClientSize = new System.Drawing.Size(796, 522);
             this.Controls.Add(this.btnPay);
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lGrandTotal);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lTNum);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lTotal);
             this.Controls.Add(this.dgvCashier);
             this.Name = "Cashier_CashPayment";
             this.Text = "Cashier_CashPayment";
@@ -137,10 +146,10 @@ namespace Project_Staff
         }
 
         #endregion
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lGrandTotal;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lTNum;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lTotal;
         private System.Windows.Forms.DataGridView dgvCashier;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnPay;
