@@ -126,11 +126,6 @@ namespace Project_Staff
             }
         }
 
-        private void dgvTransaction_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void Admin_Load(object sender, EventArgs e)
         {
 
@@ -152,6 +147,14 @@ namespace Project_Staff
 
 
             }
+        }
+
+        private void btnSales_Click(object sender, EventArgs e)
+        {
+            Hide();
+            Admin_Sales admin = new Admin_Sales();
+            admin.ShowDialog();
+            Show();
         }
     }
 }
