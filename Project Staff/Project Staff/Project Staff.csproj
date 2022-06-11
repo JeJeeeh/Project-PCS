@@ -200,6 +200,12 @@
     <Compile Include="Report_Sales.Designer.cs">
       <DependentUpon>Report_Sales.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sales_Report.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sales_Report.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
     </EmbeddedResource>
@@ -257,6 +263,10 @@
     </Compile>
     <EmbeddedResource Include="Report_Sales.resx">
       <DependentUpon>Report_Sales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sales_Report.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Sales_Report.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

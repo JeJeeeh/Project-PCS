@@ -151,9 +151,14 @@ namespace Project_Staff
 
         private void btnSales_Click(object sender, EventArgs e)
         {
+           
+        }
+
+        private void btnSummary_Click(object sender, EventArgs e)
+        {
             Hide();
-            Admin_Sales admin = new Admin_Sales();
-            admin.ShowDialog();
+            Report_Sales report = new Report_Sales();
+            report.ShowDialog();
             Show();
         }
     }
