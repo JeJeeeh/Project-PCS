@@ -149,7 +149,7 @@ namespace Project_Staff
                 rpt.SetParameterValue("htransid", Convert.ToInt32(dgvTransaction.Rows[rowIdx].Cells[0].Value.ToString()));
                 FormReport reportt = new FormReport(rpt);
                 reportt.ShowDialog();
-
+                Show();
 
 
 
