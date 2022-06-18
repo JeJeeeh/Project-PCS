@@ -29,8 +29,6 @@ namespace Project_Staff
         /// </summary>
         private void InitializeComponent()
         {
-            this.lGrandTotal = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.lTNum = new System.Windows.Forms.Label();
             this.lTotal = new System.Windows.Forms.Label();
             this.dgvCashier = new System.Windows.Forms.DataGridView();
@@ -38,26 +36,6 @@ namespace Project_Staff
             this.btnPay = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCashier)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lGrandTotal
-            // 
-            this.lGrandTotal.AutoSize = true;
-            this.lGrandTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lGrandTotal.Location = new System.Drawing.Point(487, 429);
-            this.lGrandTotal.Name = "lGrandTotal";
-            this.lGrandTotal.Size = new System.Drawing.Size(267, 25);
-            this.lGrandTotal.TabIndex = 14;
-            this.lGrandTotal.Text = "Grand Total = Rp. 110.000";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(579, 404);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 20);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "PPN = 10%";
             // 
             // lTNum
             // 
@@ -73,7 +51,7 @@ namespace Project_Staff
             // 
             this.lTotal.AutoSize = true;
             this.lTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lTotal.Location = new System.Drawing.Point(564, 372);
+            this.lTotal.Location = new System.Drawing.Point(594, 377);
             this.lTotal.Name = "lTotal";
             this.lTotal.Size = new System.Drawing.Size(190, 24);
             this.lTotal.TabIndex = 11;
@@ -117,7 +95,7 @@ namespace Project_Staff
             this.btnPay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPay.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPay.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnPay.Location = new System.Drawing.Point(679, 457);
+            this.btnPay.Location = new System.Drawing.Point(679, 416);
             this.btnPay.Name = "btnPay";
             this.btnPay.Size = new System.Drawing.Size(110, 57);
             this.btnPay.TabIndex = 71;
@@ -129,11 +107,9 @@ namespace Project_Staff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(796, 522);
+            this.ClientSize = new System.Drawing.Size(796, 481);
             this.Controls.Add(this.btnPay);
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.lGrandTotal);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.lTNum);
             this.Controls.Add(this.lTotal);
             this.Controls.Add(this.dgvCashier);
@@ -146,8 +122,6 @@ namespace Project_Staff
         }
 
         #endregion
-        private System.Windows.Forms.Label lGrandTotal;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lTNum;
         private System.Windows.Forms.Label lTotal;
         private System.Windows.Forms.DataGridView dgvCashier;

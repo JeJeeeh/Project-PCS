@@ -75,10 +75,6 @@ namespace Project_Staff
             conn.Close();
 
             lTotal.Text = "Total = Rp." + grandTotal;
-
-            int totalPPN = Convert.ToInt32(grandTotal)/10 + Convert.ToInt32(grandTotal);
-
-            lGrandTotal.Text = "Grand Total = Rp." + totalPPN.ToString();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
