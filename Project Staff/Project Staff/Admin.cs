@@ -126,11 +126,6 @@ namespace Project_Staff
             }
         }
 
-        private void dgvTransaction_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void Admin_Load(object sender, EventArgs e)
         {
 
@@ -149,12 +144,22 @@ namespace Project_Staff
                 rpt.SetParameterValue("htransid", Convert.ToInt32(dgvTransaction.Rows[rowIdx].Cells[0].Value.ToString()));
                 FormReport reportt = new FormReport(rpt);
                 reportt.ShowDialog();
-
-
-
-
+                Show();
 
             }
+        }
+
+        private void btnSales_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btnSummary_Click(object sender, EventArgs e)
+        {
+            Hide();
+            Report_Sales report = new Report_Sales();
+            report.ShowDialog();
+            Show();
         }
     }
 }

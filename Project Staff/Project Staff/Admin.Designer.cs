@@ -42,14 +42,16 @@ namespace Project_Staff
             this.btnStaff = new System.Windows.Forms.Button();
             this.btnIngredient = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSales = new System.Windows.Forms.Button();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.btnBundle = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.dgvTransaction = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
+            this.dgvTransaction = new System.Windows.Forms.DataGridView();
+            this.btnSummary = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -65,7 +67,7 @@ namespace Project_Staff
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(268, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(169, 25);
+            this.label1.Size = new System.Drawing.Size(137, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Welcome Admin";
             // 
@@ -89,7 +91,7 @@ namespace Project_Staff
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(269, 48);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 17);
+            this.label2.Size = new System.Drawing.Size(107, 16);
             this.label2.TabIndex = 3;
             this.label2.Text = "Daftar Transaksi";
             // 
@@ -107,7 +109,7 @@ namespace Project_Staff
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(528, 48);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(25, 17);
+            this.label3.Size = new System.Drawing.Size(25, 16);
             this.label3.TabIndex = 3;
             this.label3.Text = "To";
             // 
@@ -187,6 +189,7 @@ namespace Project_Staff
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel1.Controls.Add(this.btnSales);
             this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Controls.Add(this.btnBundle);
             this.panel1.Controls.Add(this.pictureBox3);
@@ -202,6 +205,20 @@ namespace Project_Staff
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(237, 606);
             this.panel1.TabIndex = 6;
+            // 
+            // btnSales
+            // 
+            this.btnSales.BackColor = System.Drawing.Color.White;
+            this.btnSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSales.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSales.Location = new System.Drawing.Point(3, 423);
+            this.btnSales.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSales.Name = "btnSales";
+            this.btnSales.Size = new System.Drawing.Size(232, 57);
+            this.btnSales.TabIndex = 5;
+            this.btnSales.Text = "Sales";
+            this.btnSales.UseVisualStyleBackColor = false;
+            this.btnSales.Click += new System.EventHandler(this.btnSales_Click);
             // 
             // pictureBox5
             // 
@@ -276,6 +293,16 @@ namespace Project_Staff
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(61, 130);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(89, 20);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "McDoggie";
+            // 
             // dgvTransaction
             // 
             this.dgvTransaction.AllowUserToAddRows = false;
@@ -288,25 +315,26 @@ namespace Project_Staff
             this.dgvTransaction.RowHeadersVisible = false;
             this.dgvTransaction.RowHeadersWidth = 51;
             this.dgvTransaction.RowTemplate.Height = 24;
-            this.dgvTransaction.Size = new System.Drawing.Size(743, 463);
+            this.dgvTransaction.Size = new System.Drawing.Size(743, 410);
             this.dgvTransaction.TabIndex = 8;
             this.dgvTransaction.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTransaction_CellContentClick);
             // 
-            // label4
+            // btnSummary
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(61, 130);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(109, 25);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "McDoggie";
+            this.btnSummary.Location = new System.Drawing.Point(824, 524);
+            this.btnSummary.Name = "btnSummary";
+            this.btnSummary.Size = new System.Drawing.Size(197, 53);
+            this.btnSummary.TabIndex = 9;
+            this.btnSummary.Text = "Sales Report";
+            this.btnSummary.UseVisualStyleBackColor = true;
+            this.btnSummary.Click += new System.EventHandler(this.btnSummary_Click);
             // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1049, 614);
+            this.ClientSize = new System.Drawing.Size(1049, 597);
+            this.Controls.Add(this.btnSummary);
             this.Controls.Add(this.dgvTransaction);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnClear);
@@ -357,5 +385,7 @@ namespace Project_Staff
         private System.Windows.Forms.Button btnBundle;
         private System.Windows.Forms.DataGridView dgvTransaction;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnSales;
+        private System.Windows.Forms.Button btnSummary;
     }
 }
