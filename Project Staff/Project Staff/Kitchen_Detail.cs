@@ -69,10 +69,13 @@ namespace Project_Staff
         {
             List<string> list_in_id = new List<string>();
             List<string> list_qty = new List<string>();
+            List<string> list_amount = new List<string>();
         
             for (int i = 0; i < dgvKitchenDetail.Rows.Count; i++)
             {
                 string nama = dgvKitchenDetail.Rows[i].Cells[1].Value.ToString();
+                string amount = dgvKitchenDetail.Rows[i].Cells[0].Value.ToString();
+
 
                 string q = $"SELECT i.in_id, mi.mi_quantity FROM menu m JOIN menu_ingredient mi ON m.me_id = mi.mi_me_id JOIN ingredient i ON mi.mi_in_id = i.in_id WHERE m.me_name = '{nama}';";
 
@@ -88,6 +91,7 @@ namespace Project_Staff
 
                         list_in_id.Add(rd.GetString(0));
                         list_qty.Add(rd.GetString(1));
+                        list_amount.Add(amount);
                     }
                 }
                 catch
@@ -100,7 +104,7 @@ namespace Project_Staff
 
             for (int i = 0; i < list_in_id.Count; i++)
             {
-                string q2 = $"UPDATE ingredient SET in_stock = (SELECT in_stock FROM ingredient WHERE in_id = {list_in_id[i]}) - {list_qty[i]} WHERE in_id = {list_in_id[i]};";
+                string q2 = $"UPDATE ingredient SET in_stock = (SELECT in_stock FROM ingredient WHERE in_id = {list_in_id[i]}) - ({list_qty[i]} * {list_amount[i]}) WHERE in_id = {list_in_id[i]};";
 
                 try
                 {
