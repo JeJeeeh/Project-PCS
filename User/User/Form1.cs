@@ -16,6 +16,10 @@ namespace User
         ArrayList listmakanan = new ArrayList();
         ArrayList listmakanan2 = new ArrayList();
         ArrayList listdtrans = new ArrayList();
+        ArrayList in_id = new ArrayList();
+        ArrayList in_stock = new ArrayList();
+        ArrayList mi_in_id = new ArrayList();
+        ArrayList ma_id = new ArrayList();
         MySqlConnection conn;
         List<Button> buttons = new List<Button>();
         List<Button> buttons2 = new List<Button>();
@@ -28,6 +32,7 @@ namespace User
         int hitung = 0;
         int reset = 0;
         string [] makanan = new string[100];
+        string[] statusm = new string[100];
         string textmakanan = " ";
         int pertamakali = 0;
         int sama = 0;
@@ -48,8 +53,47 @@ namespace User
                 conn.Close();
             }
         }
+        private void getid()
+        {
+            in_id.Clear();
+            string query = $"SELECT in_id as texts FROM ingredient";
+
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+
+            conn.Open();
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+
+            while (rdr.Read())
+            {
+                in_id.Add(rdr["texts"].ToString());
+
+            }
+            conn.Close();
+        }
+        private void getstok()
+        {
+            in_stock.Clear();
+            string query = $"SELECT in_stock as texts FROM ingredient";
+
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+
+            conn.Open();
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+
+            while (rdr.Read())
+            {
+                in_stock.Add(rdr["texts"].ToString());
+             
+            }
+            conn.Close();
+        }
         private void btnpesan_Click(object sender, EventArgs e)
         {
+
+            getid();
+            getstok();
             btnpesan.Visible = false;
             PbMenu.Visible = false;
             this.BackColor = Color.White;
@@ -99,6 +143,23 @@ namespace User
                     i++;
                 }
                 conn.Close();
+
+                string qs = $"SELECT me_status as texts FROM menu where me_ty_id = " + press + "";
+
+                MySqlCommand cs = new MySqlCommand(qs, conn);
+
+                conn.Open();
+                MySqlDataReader rs = cs.ExecuteReader();
+
+                int iss = 0;
+
+                while (rs.Read())
+                {
+                    statusm[iss] = rs["texts"].ToString();
+                    iss++;
+                }
+                conn.Close();
+
             }
             else if ( press == 4)
             {
@@ -118,7 +179,24 @@ namespace User
                     i++;
                 }
                 conn.Close();
-               
+
+
+                string qs = $"SELECT bu_status as texts FROM bundle WHERE bu_id > 0;";
+
+                MySqlCommand cs = new MySqlCommand(qs, conn);
+
+                conn.Open();
+                MySqlDataReader rs = cs.ExecuteReader();
+
+                int iss = 0;
+
+                while (rs.Read())
+                {
+                    statusm[iss] = rs["texts"].ToString();
+                    iss++;
+                }
+                conn.Close();
+
             }
         }
 
@@ -185,6 +263,10 @@ namespace User
                     {
                         newButton.Text = makanan[count];
                     }
+                    if (Int32.Parse(statusm[count]) != 1)
+                    {
+                        newButton.Enabled = false;
+                    }
                     newButton.Location = new Point(inx, iny);
                     newButton.Size = new Size(100, 100);
                     inx = inx + 150;
@@ -246,6 +328,80 @@ namespace User
             lbdescription.Text = "";
             if (press > 0 && press < 4)
             {
+                string idds = "";
+                string q0 = $"SELECT me_id as texts FROM menu WHERE me_name = '" + button.Text + "'";
+
+                MySqlCommand c0 = new MySqlCommand(q0, conn);
+
+                conn.Open();
+                MySqlDataReader r0 = c0.ExecuteReader();
+
+                while (r0.Read())
+                {
+                    idds=r0["texts"].ToString();
+                }
+                conn.Close();
+
+                mi_in_id.Clear();
+                string q1 = $"SELECT mi_in_id AS texts FROM menu_ingredient WHERE mi_me_id = (SELECT me_id FROM menu WHERE me_name = '"+button.Text+"')";
+
+                MySqlCommand c1 = new MySqlCommand(q1, conn);
+
+                conn.Open();
+                MySqlDataReader r1 = c1.ExecuteReader();
+
+                while (r1.Read())
+                {
+                 mi_in_id.Add(r1["texts"].ToString());
+                }
+                conn.Close();
+
+                int quit = 1;
+                int ccount = 1;
+                while (quit != 0)
+                {
+                    foreach (string item in mi_in_id)
+                    {
+                        string q2 = $"SELECT mi_quantity AS texts FROM menu_ingredient WHERE mi_in_id = '" + item + "' and mi_me_id = '" + idds + "'";
+
+                        MySqlCommand c2 = new MySqlCommand(q2, conn);
+
+                        conn.Open();
+                        MySqlDataReader r2 = c2.ExecuteReader();
+
+                        while (r2.Read())
+                        {
+                            int numup = 0;
+                            int cks = 0;
+                            int minus = 0;
+                            foreach (string ingid in in_id)
+                            {
+                                if (ingid.Equals(item))
+                                {
+                                    numup = Int32.Parse(r2["texts"].ToString()) * ccount;
+                                    minus = Int32.Parse(in_stock[cks].ToString()) - numup;
+
+                                    if (minus < Int32.Parse(r2["texts"].ToString()))
+                                    {
+                                        quit = 0;
+                                    }
+                                }
+                                cks++;
+                            }
+                        }
+                        conn.Close();
+                    }
+                    if (quit > 0)
+                    {
+                        ccount++;
+                    }
+                }
+                nuobjek.Maximum = ccount;
+
+
+
+
+
                 string query = $"SELECT me_description as texts FROM menu WHERE me_name = '" + button.Text + "';";
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -281,8 +437,9 @@ namespace User
             }
             if (press == 4)
             {
-                lbdescription.Text = "Paket ini berisi : ";
-                string query = $"SELECT bu_description AS texts FROM bundle WHERE bu_name = '"+ button.Text + "';";
+                nuobjek.Maximum = 1;
+                lbdescription.Text = "Paket ini berisi ";
+                string query = $"SELECT me_name as texts FROM menu ,(SELECT mb_me_id AS idbud FROM bundle,menu_bundle WHERE bu_name = '" + button.Text + "' ORDER BY mb_me_id ASC) mn WHERE me_id = mn.idbud;";
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
 
@@ -293,10 +450,18 @@ namespace User
 
                 while (rdr.Read())
                 {
+                    if (i == 0)
+                    {
                         lbdescription.Text = lbdescription.Text + rdr["texts"].ToString();
+                    }
+                    else
+                    {
+                        lbdescription.Text = lbdescription.Text + ", " + rdr["texts"].ToString();
+                    }
                     i++;
                 }
                 conn.Close();
+
 
                 string querys = $"SELECT  bu_price as texts FROM bundle WHERE bu_name =  '" + button.Text + "';";
 
@@ -313,6 +478,98 @@ namespace User
                     reset = Int32.Parse(rdrs["texts"].ToString());
                 }
                 conn.Close();
+
+
+
+
+
+
+                ma_id.Clear();
+                string qs = $"SELECT me_name as texts FROM menu ,(SELECT mb_me_id AS idbud FROM bundle,menu_bundle WHERE bu_name = '" + button.Text + "' ORDER BY mb_me_id ASC) mn WHERE me_id = mn.idbud;";
+
+                MySqlCommand cs = new MySqlCommand(qs, conn);
+
+                conn.Open();
+                MySqlDataReader rs = cs.ExecuteReader();
+
+                while (rs.Read())
+                {
+                    ma_id.Add(rs["texts"].ToString());
+                }
+                conn.Close();
+                int quit = 1;
+                int ccount = 1;
+                while (quit != 0)
+                {
+                    foreach (string maid in ma_id)
+                    {
+                    string idds = "";
+                    string q0 = $"SELECT me_id as texts FROM menu WHERE me_name = '" + maid + "'";
+
+                    MySqlCommand c0 = new MySqlCommand(q0, conn);
+
+                    conn.Open();
+                    MySqlDataReader r0 = c0.ExecuteReader();
+
+                    while (r0.Read())
+                    {
+                        idds = r0["texts"].ToString();
+                    }
+                    conn.Close();
+
+                    mi_in_id.Clear();
+                    string q1 = $"SELECT mi_in_id AS texts FROM menu_ingredient WHERE mi_me_id = (SELECT me_id FROM menu WHERE me_name = '" + maid + "')";
+
+                    MySqlCommand c1 = new MySqlCommand(q1, conn);
+
+                    conn.Open();
+                    MySqlDataReader r1 = c1.ExecuteReader();
+
+                    while (r1.Read())
+                    {
+                        mi_in_id.Add(r1["texts"].ToString());
+                    }
+                    conn.Close();
+
+                        foreach (string item in mi_in_id)
+                        {
+                            string q2 = $"SELECT mi_quantity AS texts FROM menu_ingredient WHERE mi_in_id = '" + item + "' and mi_me_id = '" + idds + "'";
+
+                            MySqlCommand c2 = new MySqlCommand(q2, conn);
+
+                            conn.Open();
+                            MySqlDataReader r2 = c2.ExecuteReader();
+
+                            while (r2.Read())
+                            {
+                                int numup = 0;
+                                int cks = 0;
+                                int minus = 0;
+                                foreach (string ingid in in_id)
+                                {
+                                    if (ingid.Equals(item))
+                                    {
+                                        numup = Int32.Parse(r2["texts"].ToString()) * ccount;
+                                        minus = Int32.Parse(in_stock[cks].ToString()) - numup;
+
+                                        if (minus < Int32.Parse(r2["texts"].ToString()))
+                                        {
+                                            quit = 0;
+                                        }
+                                    }
+                                    cks++;
+                                }
+                            }
+                            conn.Close();
+                        }
+                    }
+                    if (quit > 0)
+                    {
+                        ccount++;
+                    }
+                }
+
+                nuobjek.Maximum = ccount;
             }
         }
         private void bmakanan_Click(object sender, EventArgs e)
