@@ -66,6 +66,7 @@ namespace Project_Staff {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+<<<<<<< Updated upstream
         public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection2 {
             get {
                 return this.ReportDefinition.Sections[2];
@@ -101,6 +102,11 @@ namespace Project_Staff {
         public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection2 {
             get {
                 return this.ReportDefinition.Sections[6];
+=======
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
+            get {
+                return this.ReportDefinition.Sections[2];
+>>>>>>> Stashed changes
             }
         }
         
@@ -108,7 +114,11 @@ namespace Project_Staff {
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
+<<<<<<< Updated upstream
                 return this.ReportDefinition.Sections[7];
+=======
+                return this.ReportDefinition.Sections[3];
+>>>>>>> Stashed changes
             }
         }
         
@@ -116,7 +126,11 @@ namespace Project_Staff {
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public CrystalDecisions.CrystalReports.Engine.Section Section5 {
             get {
+<<<<<<< Updated upstream
                 return this.ReportDefinition.Sections[8];
+=======
+                return this.ReportDefinition.Sections[4];
+>>>>>>> Stashed changes
             }
         }
     }
