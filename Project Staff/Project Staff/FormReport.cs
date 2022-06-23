@@ -18,11 +18,14 @@ namespace Project_Staff
         string connString;
         DataSet dsTransaction;
         DataTable dtTransaction;
-        public FormReport(CrystalReport1 cr)
+        string htransId;
+
+        public FormReport(string htransId)
         {
             InitializeComponent();
             connectDB();
-            this.cr = cr;
+
+            this.htransId = htransId;
         }
 
         public void connectDB()
@@ -44,7 +47,10 @@ namespace Project_Staff
 
         private void FormReport_Load(object sender, EventArgs e)
         {
-            crystalReportViewer1.ReportSource = cr;
+            CrystalReport1 rpt = new CrystalReport1();
+            rpt.SetDatabaseLogon("root", "", "localhost", "project_pcs");
+            rpt.SetParameterValue("htransid", Convert.ToInt32(htransId));
+            crystalReportViewer1.ReportSource = rpt;
         }
     }
 }

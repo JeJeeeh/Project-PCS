@@ -11,19 +11,19 @@ using MySql.Data.MySqlClient;
 
 namespace Project_Staff
 {
-    public partial class Report_Sales : Form
+    public partial class Admin_Menu_Form : Form
     {
-        public Report_Sales()
+        public Admin_Menu_Form()
         {
             InitializeComponent();
-            loadReport();
         }
 
-        private void loadReport()
+        private void crystalReportViewer1_Load(object sender, EventArgs e)
         {
-            Sales_Report rpt = new Sales_Report();
+            CrystalReport3 rpt = new CrystalReport3();
             rpt.SetDatabaseLogon("root", "", "localhost", "project_pcs");
             crystalReportViewer1.ReportSource = rpt;
         }
     }
+
 }

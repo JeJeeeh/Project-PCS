@@ -139,10 +139,8 @@ namespace Project_Staff
 
             if (rowIdx < dsTransaction.Tables[0].Rows.Count)
             {
-                CrystalReport1 rpt = new CrystalReport1();
-                rpt.SetDatabaseLogon("root", "", "localhost", "project_pcs");
-                rpt.SetParameterValue("htransid", Convert.ToInt32(dgvTransaction.Rows[rowIdx].Cells[0].Value.ToString()));
-                FormReport reportt = new FormReport(rpt);
+                
+                FormReport reportt = new FormReport(dgvTransaction.Rows[rowIdx].Cells[0].Value.ToString());
                 reportt.ShowDialog();
                 Show();
 
@@ -160,6 +158,11 @@ namespace Project_Staff
             Report_Sales report = new Report_Sales();
             report.ShowDialog();
             Show();
+        }
+
+        private void dgvTransaction_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
