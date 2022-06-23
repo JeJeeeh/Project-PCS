@@ -37,6 +37,7 @@ namespace Project_Staff
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.btnSummary = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).BeginInit();
             this.SuspendLayout();
             // 
@@ -135,11 +136,22 @@ namespace Project_Staff
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // btnSummary
+            // 
+            this.btnSummary.Location = new System.Drawing.Point(562, 453);
+            this.btnSummary.Name = "btnSummary";
+            this.btnSummary.Size = new System.Drawing.Size(225, 47);
+            this.btnSummary.TabIndex = 71;
+            this.btnSummary.Text = "Summary";
+            this.btnSummary.UseVisualStyleBackColor = true;
+            this.btnSummary.Click += new System.EventHandler(this.btnSummary_Click);
+            // 
             // Admin_Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 458);
+            this.ClientSize = new System.Drawing.Size(800, 512);
+            this.Controls.Add(this.btnSummary);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnClearFilter);
@@ -167,5 +179,6 @@ namespace Project_Staff
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnSummary;
     }
 }

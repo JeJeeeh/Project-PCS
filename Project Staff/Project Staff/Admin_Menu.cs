@@ -129,5 +129,11 @@ namespace Project_Staff
             da.Fill(dsMenu);
             dgvStaff.DataSource = dsMenu.Tables[0].DefaultView;
         }
+
+        private void btnSummary_Click(object sender, EventArgs e)
+        {
+            Report_Menu rpt = new Report_Menu();
+            rpt.ShowDialog();
+        }
     }
 }

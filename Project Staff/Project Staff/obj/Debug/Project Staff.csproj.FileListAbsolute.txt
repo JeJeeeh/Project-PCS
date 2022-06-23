@@ -168,3 +168,4 @@ C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\bin\Debug\stdole.dll
 C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
 C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.FormReport.resources
 C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.Report_Sales.resources
+C:\Users\jason\OneDrive\Documents\Kuliah\Sem 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.Report_Menu.resources
