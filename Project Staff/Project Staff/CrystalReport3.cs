@@ -16,14 +16,14 @@ namespace Project_Staff {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class Menu_Report : ReportClass {
+    public class CrystalReport3 : ReportClass {
         
-        public Menu_Report() {
+        public CrystalReport3() {
         }
         
         public override string ResourceName {
             get {
-                return "Menu_Report.rpt";
+                return "CrystalReport3.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Project_Staff {
         
         public override string FullResourceName {
             get {
-                return "Project_Staff.Menu_Report.rpt";
+                return "Project_Staff.CrystalReport3.rpt";
             }
             set {
                 // Do nothing
@@ -66,47 +66,9 @@ namespace Project_Staff {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-<<<<<<< Updated upstream
-        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection2 {
-            get {
-                return this.ReportDefinition.Sections[2];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection1 {
-            get {
-                return this.ReportDefinition.Sections[3];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
-            get {
-                return this.ReportDefinition.Sections[4];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
-            get {
-                return this.ReportDefinition.Sections[5];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection2 {
-            get {
-                return this.ReportDefinition.Sections[6];
-=======
         public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[2];
->>>>>>> Stashed changes
             }
         }
         
@@ -114,11 +76,7 @@ namespace Project_Staff {
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
-<<<<<<< Updated upstream
-                return this.ReportDefinition.Sections[7];
-=======
                 return this.ReportDefinition.Sections[3];
->>>>>>> Stashed changes
             }
         }
         
@@ -126,19 +84,15 @@ namespace Project_Staff {
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public CrystalDecisions.CrystalReports.Engine.Section Section5 {
             get {
-<<<<<<< Updated upstream
-                return this.ReportDefinition.Sections[8];
-=======
                 return this.ReportDefinition.Sections[4];
->>>>>>> Stashed changes
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedMenu_Report : Component, ICachedReport {
+    public class CachedCrystalReport3 : Component, ICachedReport {
         
-        public CachedMenu_Report() {
+        public CachedCrystalReport3() {
         }
         
         [Browsable(false)]
@@ -175,7 +129,7 @@ namespace Project_Staff {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            Menu_Report rpt = new Menu_Report();
+            CrystalReport3 rpt = new CrystalReport3();
             rpt.Site = this.Site;
             return rpt;
         }

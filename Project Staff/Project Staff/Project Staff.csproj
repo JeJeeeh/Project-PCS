@@ -132,6 +132,12 @@
     <Compile Include="Admin_Menu_Add.Designer.cs">
       <DependentUpon>Admin_Menu_Add.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin_Menu_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_Menu_Form.Designer.cs">
+      <DependentUpon>Admin_Menu_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin_Sales.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +180,12 @@
       <DependentUpon>CrystalReport2.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CrystalReport3.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport3.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,12 +209,6 @@
     </Compile>
     <Compile Include="Kitchen_Detail.Designer.cs">
       <DependentUpon>Kitchen_Detail.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Menu_Report.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Menu_Report.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -236,6 +242,9 @@
     <EmbeddedResource Include="Admin_Menu_Add.resx">
       <DependentUpon>Admin_Menu_Add.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Admin_Menu_Form.resx">
+      <DependentUpon>Admin_Menu_Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin_Staff.resx">
       <DependentUpon>Admin_Staff.cs</DependentUpon>
     </EmbeddedResource>
@@ -256,6 +265,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport2.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport3.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport3.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -267,10 +280,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Kitchen_Detail.resx">
       <DependentUpon>Kitchen_Detail.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Menu_Report.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Menu_Report.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

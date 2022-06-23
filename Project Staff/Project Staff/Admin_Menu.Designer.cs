@@ -37,6 +37,7 @@ namespace Project_Staff
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.btn_summary = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).BeginInit();
             this.SuspendLayout();
             // 
@@ -135,11 +136,27 @@ namespace Project_Staff
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // btn_summary
+            // 
+            this.btn_summary.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btn_summary.FlatAppearance.BorderSize = 0;
+            this.btn_summary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_summary.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_summary.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_summary.Location = new System.Drawing.Point(649, 452);
+            this.btn_summary.Name = "btn_summary";
+            this.btn_summary.Size = new System.Drawing.Size(139, 57);
+            this.btn_summary.TabIndex = 71;
+            this.btn_summary.Text = "SUMMARY";
+            this.btn_summary.UseVisualStyleBackColor = false;
+            this.btn_summary.Click += new System.EventHandler(this.btn_summary_Click);
+            // 
             // Admin_Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 458);
+            this.ClientSize = new System.Drawing.Size(800, 513);
+            this.Controls.Add(this.btn_summary);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnClearFilter);
@@ -167,5 +184,6 @@ namespace Project_Staff
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btn_summary;
     }
 }
