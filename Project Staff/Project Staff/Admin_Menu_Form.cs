@@ -20,7 +20,7 @@ namespace Project_Staff
 
         private void crystalReportViewer1_Load(object sender, EventArgs e)
         {
-            CrystalReport1 rpt = new CrystalReport1();
+            CrystalReport3 rpt = new CrystalReport3();
             rpt.SetDatabaseLogon("root", "", "localhost", "project_pcs");
             crystalReportViewer1.ReportSource = rpt;
         }

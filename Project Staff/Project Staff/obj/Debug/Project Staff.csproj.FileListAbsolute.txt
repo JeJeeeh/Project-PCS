@@ -169,3 +169,5 @@ C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\bin\Debug\CrystalDecis
 C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.FormReport.resources
 C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.Report_Sales.resources
 C:\Semester 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.Admin_Menu_Form.resources
+C:\Users\jason\OneDrive\Documents\Kuliah\Sem 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.Admin_Menu_Form.resources
+C:\Users\jason\OneDrive\Documents\Kuliah\Sem 4\PCS\Project-PCS\Project Staff\Project Staff\obj\Debug\Project_Staff.Report_Menu.resources

@@ -21,9 +21,9 @@ namespace Project_Staff
 
         private void loadReport()
         {
-            Menu_Report rpt = new Menu_Report();
+            /*Menu_Report rpt = new Menu_Report();
             rpt.SetDatabaseLogon("localhost", "", "root", "project_pcs");
-            crystalReportViewer1.ReportSource = rpt;
+            crystalReportViewer1.ReportSource = rpt;*/
         }
     }
 }
