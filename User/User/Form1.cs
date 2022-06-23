@@ -437,7 +437,7 @@ namespace User
             }
             if (press == 4)
             {
-                nuobjek.Maximum = 1;
+
                 lbdescription.Text = "Paket ini berisi ";
                 string query = $"SELECT me_name as texts FROM menu ,(SELECT mb_me_id AS idbud FROM bundle,menu_bundle WHERE bu_name = '" + button.Text + "' ORDER BY mb_me_id ASC) mn WHERE me_id = mn.idbud;";
 
@@ -889,6 +889,7 @@ namespace User
                 }
 
             }
+            int sama = 0;
             foreach (var item in listmakanan)
             {
 
@@ -988,21 +989,25 @@ namespace User
 
                             try
                             {
-
-                                string Query = "INSERT INTO dtrans VALUES ('" + dtid + "','" + htid + "','" + ids + "','" + num + "',1);";
-                                MySqlCommand MyCommand2 = new MySqlCommand(Query, conn);
-                                conn.Open();
-                                MySqlDataReader MyReader2 = MyCommand2.ExecuteReader();
-                                while (MyReader2.Read())
+                                if (sama != Int32.Parse(ids))
                                 {
+                                    sama = Int32.Parse(ids);
+                                    string Query = "INSERT INTO dtrans VALUES ('" + dtid + "','" + htid + "','" + ids + "','" + num + "',1);";
+                                    MySqlCommand MyCommand2 = new MySqlCommand(Query, conn);
+                                    conn.Open();
+                                    MySqlDataReader MyReader2 = MyCommand2.ExecuteReader();
+                                    while (MyReader2.Read())
+                                    {
+                                    }
+                                    conn.Close();
+                                    dtid = dtid + 1;
                                 }
-                                conn.Close();
                             }
                             catch (Exception ex)
                             {
                                 MessageBox.Show(ex.Message);
                             }
-                            dtid = dtid + 1;
+                        
                         }
                     }
                 }
@@ -1128,6 +1133,7 @@ namespace User
                 }
 
             }
+            int sama = 0;
             foreach (var item in listmakanan)
             {
 
@@ -1155,7 +1161,7 @@ namespace User
                         check = Int32.Parse(rdrs["texts"].ToString());
                     }
                     conn.Close();
-
+  
                     string querys3 = $"SELECT bu_id as texts FROM bundle WHERE bu_name = '" + items.ToString() + "';";
 
                     MySqlCommand cmds3 = new MySqlCommand(querys3, conn);
@@ -1183,6 +1189,7 @@ namespace User
                             while (rdr.Read())
                             {
                                 listdtrans.Add(rdr["texts"].ToString());
+                              
                             }
                             conn.Close();
 
@@ -1210,6 +1217,7 @@ namespace User
                         }
                         else
                         {
+                  
                             string ids = "";
                             string query = $"SELECT me_id as texts FROM menu WHERE me_name = '" + items.ToString() + "';";
 
@@ -1227,21 +1235,24 @@ namespace User
 
                             try
                             {
-
-                                string Query = "INSERT INTO dtrans VALUES ('" + dtid + "','" + htid + "','" + ids + "','" + num + "',1);";
-                                MySqlCommand MyCommand2 = new MySqlCommand(Query, conn);
-                                conn.Open();
-                                MySqlDataReader MyReader2 = MyCommand2.ExecuteReader();
-                                while (MyReader2.Read())
+                                if (sama != Int32.Parse(ids))
                                 {
+                                    sama = Int32.Parse(ids);
+                                    string Query = "INSERT INTO dtrans VALUES ('" + dtid + "','" + htid + "','" + ids + "','" + num + "',1);";
+                                    MySqlCommand MyCommand2 = new MySqlCommand(Query, conn);
+                                    conn.Open();
+                                    MySqlDataReader MyReader2 = MyCommand2.ExecuteReader();
+                                    while (MyReader2.Read())
+                                    {
+                                    }
+                                    conn.Close();
+                                    dtid = dtid + 1;
                                 }
-                                conn.Close();
                             }
                             catch (Exception ex)
                             {
                                 MessageBox.Show(ex.Message);
                             }
-                            dtid = dtid + 1;
                         }
                     }
                 }
